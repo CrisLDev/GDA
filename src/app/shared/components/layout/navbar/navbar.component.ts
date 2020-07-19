@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MENU} from '@shared/shared.data';
+import {UsersComponent} from './components/users/users.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +12,7 @@ export class NavbarComponent implements OnInit {
 
   @ViewChild('sidenav') sidenav;
 
-  constructor() { }
+  constructor(public dialog:MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -34,6 +36,10 @@ export class NavbarComponent implements OnInit {
     }else{
       this.check=false;
     }
+  }
+
+  openDialog() {
+    this.dialog.open(UsersComponent);
   }
 
 }

@@ -17,6 +17,9 @@ import { UsersComponent } from './components/users/users.component';
     SharedModule,
     RouterModule
   ],
+  entryComponents:[
+    UsersComponent
+  ],
   exports: [
     NavbarComponent
   ],
