@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import {MENU} from '@shared/shared.data';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +14,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  menu=MENU;
 
   reason = '';
 

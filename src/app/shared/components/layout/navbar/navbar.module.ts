@@ -1,5 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {RouterModule} from '@angular/router';
 
 // Modules
 import {SharedModule} from '@shared/shared.module';
@@ -12,7 +13,8 @@ import { MobileNavComponent } from './components/mobile-nav/mobile-nav.component
   declarations: [NavbarComponent, MobileNavComponent],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   exports: [
     NavbarComponent

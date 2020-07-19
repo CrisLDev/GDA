@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MENU} from '@shared/shared.data';
 
 @Component({
   selector: 'app-mobile-nav',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mobile-nav.component.css']
 })
 export class MobileNavComponent implements OnInit {
+
+  menu=MENU;
 
   constructor() { }
 

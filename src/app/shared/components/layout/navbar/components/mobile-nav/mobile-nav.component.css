@@ -1,0 +1,31 @@
+.mobile-menu{
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 15em;
+    min-height: 100vh;
+    text-align: center;
+    z-index: 550;
+    border: 0;
+    top: 0;
+    left: 0;
+    margin-left: 0;
+    border-radius: 0;
+}
+
+.mobile-menu ul{
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+.mobile-menu li{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: .9rem;
+    outline: none;
+    cursor: pointer;
+}
