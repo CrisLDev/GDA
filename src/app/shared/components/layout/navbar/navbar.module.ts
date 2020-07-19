@@ -8,9 +8,10 @@ import {SharedModule} from '@shared/shared.module';
 // Components
 import {NavbarComponent} from './navbar.component';
 import { MobileNavComponent } from './components/mobile-nav/mobile-nav.component';
+import { UsersComponent } from './components/users/users.component';
 
 @NgModule({
-  declarations: [NavbarComponent, MobileNavComponent],
+  declarations: [NavbarComponent, MobileNavComponent, UsersComponent],
   imports: [
     CommonModule,
     SharedModule,
