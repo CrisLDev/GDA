@@ -7,7 +7,7 @@
                 <a mat-button class="nav-link text-white" *ngFor="let i of menu" [routerLink]="i.link"><mat-icon>{{i.icon}}</mat-icon> {{i.name}}</a>
             </div>
             <div class="users">
-                <a mat-button class="nav-link text-white"><mat-icon>account_circle</mat-icon> Usuario</a>
+                <a mat-button class="nav-link text-white" (click)="openDialog()"><mat-icon>account_circle</mat-icon> Usuario</a>
             </div>
         </div>
     </mat-toolbar>
@@ -20,5 +20,3 @@
   </mat-sidenav>
   <mat-sidenav-content [class.show]="check"></mat-sidenav-content>
 </mat-sidenav-container>
-
-<button mat-button (click)="openDialog()">Launch dialog</button>
