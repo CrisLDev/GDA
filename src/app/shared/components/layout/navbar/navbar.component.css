@@ -1,0 +1,41 @@
+.desktop-nav{
+    display: none;
+}
+
+.mobile-nav-toogle{
+    display: block;
+}
+
+@media (min-width: 768px) { 
+    .desktop-nav{
+        display: block;
+    }
+
+    .mobile-nav-toogle{
+        display: none; 
+    }
+}
+
+.mat-drawer-container {
+    position: initial;
+}
+
+.mat-drawer{
+    position: fixed;
+}
+
+.mat-sidenav-content {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 100vh;
+    contain: strict;
+    z-index: -1!important;
+}
+
+.show{
+    display: block;
+}

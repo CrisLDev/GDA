@@ -1,1 +1,25 @@
-<p>navbar works!</p>
+<nav>
+    <mat-toolbar color="primary" class="navbar navbar-expand-lg">
+        <div class="container-fluid justify-content-between">
+            <button mat-button class="nav-link text-white mobile-nav-toogle" (click)="openContent()"><mat-icon>menu</mat-icon></button>
+            <a class="navbar-brand text-white" href="#">GAD</a>
+            <div class="desktop-nav">
+                <a mat-button class="nav-link text-white"><mat-icon>face</mat-icon> Empleados</a>
+                <a mat-button class="nav-link text-white"><mat-icon>local_shipping</mat-icon> Maquinarias</a>
+                <a mat-button class="nav-link text-white"><mat-icon>query_builder</mat-icon> Horarios</a>
+                <a mat-button class="nav-link text-white"><mat-icon>assignment</mat-icon> Reportes</a>
+            </div>
+            <div class="users">
+                <a mat-button class="nav-link text-white"><mat-icon>account_circle</mat-icon> Usuario</a>
+            </div>
+        </div>
+    </mat-toolbar>
+</nav>
+
+<mat-sidenav-container
+    class="example-container" (click)="close('sidenav')">
+  <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+    <app-mobile-nav></app-mobile-nav>
+  </mat-sidenav>
+  <mat-sidenav-content [class.show]="check"></mat-sidenav-content>
+</mat-sidenav-container>
