@@ -21,3 +21,15 @@ body::-webkit-scrollbar-thumb {
   background-color: #3f51b5!important;
   outline: 1px solid rgb(26, 114, 202)!important;
 }
+
+table {
+    width: 100%;
+}
+
+form{
+    width: 100%;
+}
+
+mat-form-field{
+    width: 100%;
+}

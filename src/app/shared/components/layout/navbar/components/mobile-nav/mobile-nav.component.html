@@ -1,5 +1,5 @@
 <div class="mobile-menu">
     <ul>
-        <li class="d-flex align-content-center justify-content-center" *ngFor="let i of menu"><mat-icon class="mr-1">{{i.icon}}</mat-icon>{{i.name}}</li>
+        <li class="d-flex align-content-center justify-content-center" *ngFor="let i of menu" [routerLink]="i.link"><mat-icon class="mr-1">{{i.icon}}</mat-icon>{{i.name}}</li>
     </ul>
 </div>

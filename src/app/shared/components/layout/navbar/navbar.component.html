@@ -2,7 +2,7 @@
     <mat-toolbar color="primary" class="navbar navbar-expand-lg">
         <div class="container-fluid justify-content-between">
             <button mat-button class="nav-link text-white mobile-nav-toogle" (click)="openContent()"><mat-icon>menu</mat-icon></button>
-            <a class="navbar-brand text-white" routerLink="/home">GAD</a>
+            <a class="navbar-brand text-white" routerLink="/dashboard">GAD</a>
             <div class="desktop-nav">
                 <a mat-button class="nav-link text-white" *ngFor="let i of menu" [routerLink]="i.link"><mat-icon>{{i.icon}}</mat-icon> {{i.name}}</a>
             </div>
