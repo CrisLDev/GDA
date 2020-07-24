@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "GAD"
+  "defaultProject": "GAD",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

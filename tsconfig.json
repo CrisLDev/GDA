@@ -24,6 +24,9 @@
       ],
       "@pages/*":[
         "app/pages/*"
+      ],
+      "@core/*":[
+        "app/core/*"
       ]
     }
   },

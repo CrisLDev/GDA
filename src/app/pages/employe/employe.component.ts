@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {Employe} from '@shared/interfaces/Employes/Employe';
+import {EmployeService} from '@core/services/employe/employe.service';
+import { Store } from '@ngrx/store';
+import { EmployeState } from '@app/store/reducers/employe.reducer';
+import * as fromActions from '@app/store/actions/employe.actions';
 
 export interface PeriodicElement {
   name: string;
@@ -27,9 +34,28 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class EmployeComponent implements OnInit {
 
-  constructor() { }
+  employes: Observable<Employe[]>;
+
+  constructor(private employeService: EmployeService, public router: Router, private store: Store<EmployeState>) { }
 
   ngOnInit(): void {
+    this.store.dispatch(fromActions.getEmployes());
+    this.getEmployes();
+  }
+
+  getEmployes(){
+    const employesObserver = {
+      next: employes => {
+        this.store.dispatch(fromActions.getEmployesSuccess({employes: employes}));
+        this.employes = employes;
+      },
+      error: err => {
+        this.store.dispatch(fromActions.getEmployesFailure({error: err}));
+        console.error(err);
+      }
+    };
+
+    this.employeService.getEmployes().subscribe(employesObserver);
   }
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
