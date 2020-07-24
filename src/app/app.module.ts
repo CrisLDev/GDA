@@ -4,16 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HttpClientModule} from '@angular/common/http';
 
 // Modules
 import {SharedModule} from '@shared/shared.module';
 import {ComponentsModule} from '@shared/components/components.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-import { EffectsModule } from '@ngrx/effects';
-import { reducers, metaReducers } from './store/reducers';
+import {CoreModule} from '@core/core.module';
+import { environment } from 'environments/environment';
 
 @NgModule({
   declarations: [
@@ -21,21 +19,18 @@ import { reducers, metaReducers } from './store/reducers';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    CoreModule,
     SharedModule,
     ComponentsModule,
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([]),
-    StoreModule.forRoot(reducers, {
-      metaReducers, 
+    StoreModule.forRoot({}, {
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true,
       }
     }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],

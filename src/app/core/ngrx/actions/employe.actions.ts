@@ -11,6 +11,6 @@ export const getEmployesSuccess = createAction(
 );
 
 export const getEmployesFailure = createAction(
-  '[Employe APU] Get Employes Failure',
+  '[Employe API] Get Employes Failure',
   props<{ error: any }>()
 );
