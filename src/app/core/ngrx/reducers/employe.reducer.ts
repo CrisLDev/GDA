@@ -1,4 +1,4 @@
-import { Action, createReducer, on, createFeatureSelector, createSelector } from '@ngrx/store';
+import { Action, createReducer, on} from '@ngrx/store';
 import * as EmployeActions from '../actions/employe.actions';
 import {Employe} from '@shared/interfaces/Employes/Employe';
 import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
@@ -7,6 +7,7 @@ export const employeKey = "employeState";
 
 export interface EmployeState extends EntityState<Employe> {
   error: any;
+  selectedEmploye: Employe;
 };
 
 export const adapter: EntityAdapter<Employe> = createEntityAdapter<Employe>({
@@ -14,33 +15,43 @@ export const adapter: EntityAdapter<Employe> = createEntityAdapter<Employe>({
 });
 
 export const initialState = adapter.getInitialState({
-  error: undefined
+  error: undefined,
+  selectedEmploye: undefined
 });
 
-export const reducer = createReducer(
+const employeReducer = createReducer(
   initialState,
   // Get Employes
-    on(EmployeActions.getEmployesSuccess, (state, action) => {
-      return adapter.addAll(action.employes, state)
-    }),
+  on(EmployeActions.getEmployesSuccess, (state, action) =>
+    adapter.addAll(action.employes, state)),
   on(EmployeActions.getEmployesFailure, (state, action) => {
     return {
+      ...state,
       error: action.error
-    }
-  }
-)
+    }}
+  ),
+  // Get Employe
+  on(EmployeActions.getEmployeSuccess, (state, action) => {
+    return {
+      ...state,
+      selectedEmploye: action.selectedEmploye
+    }}
+  ),
+  on(EmployeActions.getEmployeFailure,(state, action) => {
+    return {
+      ...state,
+      error: action.error
+    }}
+  )
 );
 
-export const selectEmployesFeature = createFeatureSelector<EmployeState>(
-  employeKey
-);
+export function reducer(state: EmployeState | undefined, action: Action){
+  return employeReducer(state, action);
+}
 
-export const selectEmployes = createSelector(
-  selectEmployesFeature,
-  adapter.getSelectors().selectAll
-);
-
-export const selectError = createSelector(
-  selectEmployesFeature,
-  (state: EmployeState) => state.error
-);
+export const {
+  selectIds,
+  selectEntities,
+  selectAll,
+  selectTotal
+} = adapter.getSelectors();

@@ -8,12 +8,16 @@ import {Employe} from '@shared/interfaces/Employes/Employe';
 })
 export class EmployeService {
 
-  URI = 'http://localhost:4000/api/employes'
+  URI = 'http://localhost:4000/api/employes/'
 
   constructor(private http: HttpClient) { }
 
   getEmployes(): Observable<Employe[]>{
     return this.http.get<Employe[]>(this.URI);
+  }
+
+  getEmploye(employeId: string): Observable<Employe>{
+    return this.http.get<Employe>(this.URI + employeId);
   }
 
 }

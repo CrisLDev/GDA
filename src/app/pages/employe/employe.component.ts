@@ -4,8 +4,9 @@ import {Observable} from 'rxjs';
 import {Employe} from '@shared/interfaces/Employes/Employe';
 import {EmployeService} from '@core/services/employe/employe.service';
 import { Store, select } from '@ngrx/store';
-import { EmployeState, selectEmployes} from '@core/ngrx/reducers/employe.reducer';
+import { EmployeState} from '@core/ngrx/reducers/employe.reducer';
 import * as fromActions from '@core/ngrx/actions/employe.actions';
+import { selectEmployes } from '@app/core/ngrx/selectors/employe.selectors';
 
 @Component({
   selector: 'app-employe',
@@ -28,19 +29,7 @@ export class EmployeComponent implements OnInit {
   }
 
   getEmployes(){
-    const employesObserver = {
-      next: employes => {
-        this.store.dispatch(fromActions.getEmployesSuccess({employes: employes}));
-      },
-      error: err => {
-        this.store.dispatch(fromActions.getEmployesFailure({error: err}));
-        console.error(err);
-      }
-    };
-
-    this.employeService.getEmployes().subscribe(employesObserver);
     this.employes$ = this.store.pipe(select(selectEmployes));
-    console.log(this.employes$);
-  }
+  };
 
 }

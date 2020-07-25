@@ -13,7 +13,7 @@ export class EmployeEffects {
               private employeService: EmployeService) {}
 
   // Get Employes
-  loadEmployesEffect$ = createEffect(() => 
+  loadEmployes$ = createEffect(() => 
   this.actions.pipe(
       ofType(EmployeActions.getEmployes),
       mergeMap(action =>
@@ -21,6 +21,21 @@ export class EmployeEffects {
             map(employes => EmployeActions.getEmployesSuccess({employes})),
             catchError(error =>
               of(EmployeActions.getEmployesFailure({error}))
+            )
+          )
+        )
+      )
+    );
+
+    // Get Employe
+  loadEmploye$ = createEffect(() => 
+  this.actions.pipe(
+      ofType(EmployeActions.getEmploye),
+      mergeMap(action =>
+        this.employeService.getEmploye(action.id).pipe(
+            map(employe => EmployeActions.getEmployeSuccess({selectedEmploye:employe})),
+            catchError(error =>
+              of(EmployeActions.getEmployeFailure({error}))
             )
           )
         )
