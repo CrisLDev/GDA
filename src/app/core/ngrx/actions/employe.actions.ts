@@ -6,11 +6,11 @@ export const getEmployes = createAction(
 );
 
 export const getEmployesSuccess = createAction(
-  '[Employe API] Get Employes Success',
+  '[Employe Effect] Get Employes Success',
   props<{ employes: Employe[] }>()
 );
 
 export const getEmployesFailure = createAction(
-  '[Employe API] Get Employes Failure',
+  '[Employe Effect] Get Employes Failure',
   props<{ error: any }>()
 );

@@ -1,32 +1,30 @@
 import { Action, createReducer, on, createFeatureSelector, createSelector } from '@ngrx/store';
 import * as EmployeActions from '../actions/employe.actions';
 import {Employe} from '@shared/interfaces/Employes/Employe';
+import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
 
 export const employeKey = "employeState";
 
-export interface EmployeState {
-  employes: Employe[];
+export interface EmployeState extends EntityState<Employe> {
   error: any;
 };
 
-export const initialState: EmployeState = {
-  employes: undefined,
-  error: undefined
-};
+export const adapter: EntityAdapter<Employe> = createEntityAdapter<Employe>({
+  selectId: (employes: Employe) => employes._id
+});
 
+export const initialState = adapter.getInitialState({
+  error: undefined
+});
 
 export const reducer = createReducer(
   initialState,
   // Get Employes
     on(EmployeActions.getEmployesSuccess, (state, action) => {
-      return {
-        employes: action.employes
-      }
-    }
-  ),
+      return adapter.addAll(action.employes, state)
+    }),
   on(EmployeActions.getEmployesFailure, (state, action) => {
     return {
-      employes: state.employes,
       error: action.error
     }
   }
@@ -39,5 +37,10 @@ export const selectEmployesFeature = createFeatureSelector<EmployeState>(
 
 export const selectEmployes = createSelector(
   selectEmployesFeature,
-  (state: EmployeState) => state.employes
+  adapter.getSelectors().selectAll
+);
+
+export const selectError = createSelector(
+  selectEmployesFeature,
+  (state: EmployeState) => state.error
 );

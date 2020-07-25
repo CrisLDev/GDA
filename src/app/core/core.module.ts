@@ -5,7 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './ngrx/reducers/index';
 import {StoreModule} from '@ngrx/store';
-import { environment } from 'environments/environment';
+import { EmployeEffects } from './ngrx/effects/employe.effects';
 
 @NgModule({
   declarations: [],
@@ -13,7 +13,7 @@ import { environment } from 'environments/environment';
     CommonModule,
     HttpClientModule,
     StoreModule.forFeature('AppState',reducers),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([EmployeEffects])
   ]
 })
 export class CoreModule { }
