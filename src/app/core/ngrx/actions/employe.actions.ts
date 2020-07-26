@@ -18,7 +18,7 @@ export const getEmployesFailure = createAction(
 
 // Get employe
 export const getEmploye = createAction(
-  '[Employe Component] Get Employe',
+  '[Employe Create & Edit Component] Get Employe',
   props<{id: string}>()
 );
 
@@ -29,5 +29,21 @@ export const getEmployeSuccess = createAction(
 
 export const getEmployeFailure = createAction(
   '[Employe Effect Failure] Get Employe Failure',
+  props<{error: any}>()
+);
+
+// Create Employe
+export const createEmploye = createAction(
+  '[Employe Component] Create Employe',
+  props<{employe: Employe}>()
+);
+
+export const createEmployeSuccess = createAction(
+  '[Create Employe Effect Success] Create Employe Success',
+  props<{ employe: Employe}>()
+);
+
+export const createEmployeFailure = createAction(
+  '[Create Employe Effect Failure] Create Employe Failure',
   props<{error: any}>()
 );

@@ -6,7 +6,7 @@ import {EmployeService} from '@core/services/employe/employe.service';
 import { Store, select } from '@ngrx/store';
 import { EmployeState} from '@core/ngrx/reducers/employe.reducer';
 import * as fromActions from '@core/ngrx/actions/employe.actions';
-import { selectEmployes } from '@app/core/ngrx/selectors/employe.selectors';
+import { selectEmployes, selectedEmploye } from '@app/core/ngrx/selectors/employe.selectors';
 
 @Component({
   selector: 'app-employe',
@@ -16,6 +16,8 @@ import { selectEmployes } from '@app/core/ngrx/selectors/employe.selectors';
 export class EmployeComponent implements OnInit {
 
   employes$: Observable<Employe[]>;
+
+  employe$: Observable<Employe>;
 
   constructor(
     private employeService: EmployeService, 
@@ -31,5 +33,23 @@ export class EmployeComponent implements OnInit {
   getEmployes(){
     this.employes$ = this.store.pipe(select(selectEmployes));
   };
+
+  getEmploye(employe: Employe){
+    this.store.dispatch(
+      fromActions.getEmploye({ id: employe._id})
+    );
+
+    this.employe$ = this.store.pipe(select(selectedEmploye));
+    console.log(this.employe$);
+  }
+
+  goToEditar(tabName: string, employe: Employe){
+    this.getEmploye(employe);
+    for (let i =0; i< document.querySelectorAll('.mat-tab-label-content').length; i++) {
+        if ((<HTMLElement>document.querySelectorAll('.mat-tab-label-content')[i]).innerText == tabName) {
+          (<HTMLElement>document.querySelectorAll('.mat-tab-label')[i]).click();
+        }
+      };
+  }
 
 }

@@ -12,6 +12,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [],
@@ -26,7 +28,9 @@ import {MatInputModule} from '@angular/material/input';
     MatDialogModule,
     MatTabsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDividerModule,
+    MatListModule
   ],
   exports: [
     MatIconModule,
@@ -38,7 +42,9 @@ import {MatInputModule} from '@angular/material/input';
     MatDialogModule,
     MatTabsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDividerModule,
+    MatListModule
   ]
 })
 export class MaterialModule { }

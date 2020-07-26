@@ -42,7 +42,17 @@ const employeReducer = createReducer(
       ...state,
       error: action.error
     }}
-  )
+  ),
+  // Create Employe
+  on(EmployeActions.createEmployeSuccess, (state, action) =>
+    adapter.addOne(action.employe, state)
+  ),
+  on(EmployeActions.createEmployeFailure, (state, action) => {
+    return {
+      ...state,
+      error: action.error
+    }
+  })
 );
 
 export function reducer(state: EmployeState | undefined, action: Action){

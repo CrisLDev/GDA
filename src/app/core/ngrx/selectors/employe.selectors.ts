@@ -7,7 +7,7 @@ export const selectEmployeState = createFeatureSelector<EmployeState>(
 
 export const selectEmployes = createSelector(selectEmployeState, selectAll);
 
-export const selectedEmployes = createSelector(
+export const selectedEmploye = createSelector(
   selectEmployeState, 
   (state: EmployeState) => state.selectedEmploye
 );

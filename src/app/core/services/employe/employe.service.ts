@@ -20,4 +20,8 @@ export class EmployeService {
     return this.http.get<Employe>(this.URI + employeId);
   }
 
+  createEmploye(employe: Employe): Observable<Employe>{
+    return this.http.post<Employe>(this.URI, employe);
+  }
+
 }

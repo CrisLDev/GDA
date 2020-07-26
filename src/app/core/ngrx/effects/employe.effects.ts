@@ -42,4 +42,18 @@ export class EmployeEffects {
       )
     );
 
+    // Create Employe
+    createEmploye$ = createEffect(() =>
+      this.actions.pipe(
+        ofType(EmployeActions.createEmploye),
+        mergeMap(action =>
+          this.employeService.createEmploye(action.employe).pipe(
+            map(employe => EmployeActions.createEmployeSuccess({employe})),
+            catchError(error =>
+              of(EmployeActions.createEmployeFailure({error})))
+          )
+        )
+      )
+    );
+
 }
