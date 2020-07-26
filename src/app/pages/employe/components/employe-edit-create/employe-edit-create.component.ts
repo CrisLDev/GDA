@@ -13,7 +13,7 @@ import { Employe } from '@app/shared/interfaces/Employes/Employe';
 })
 export class EmployeEditCreateComponent implements OnInit {
 
-  @Input() datoo: Employe;
+  @Input() employe: Employe;
 
   constructor(private employeService: EmployeService, private store: Store<EmployeState>) { }
 

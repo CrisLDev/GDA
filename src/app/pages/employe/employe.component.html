@@ -23,7 +23,7 @@
          </div>
       </mat-tab>	
       <mat-tab label="Crear o Editar">	
-         <app-employe-edit-create [datoo]="employe$ | async"></app-employe-edit-create>	
+         <app-employe-edit-create *ngIf="employe$ | async" [employe]="employe$ | async"></app-employe-edit-create>	
       </mat-tab>	
    </mat-tab-group>
 </div>
