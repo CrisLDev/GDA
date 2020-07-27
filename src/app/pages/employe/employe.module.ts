@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // Modules
-import {EmployeComponent} from './employe.component';
+import {EmployeComponent} from './employe/employe.component';
 import {EmployeEditCreateComponent} from '@pages/employe/employe-edit-create/employe-edit-create.component';
 import {EmployeRouting} from './employe.routing';
 import {SharedModule} from '@shared/shared.module';

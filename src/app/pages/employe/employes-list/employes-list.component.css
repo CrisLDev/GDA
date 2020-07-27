@@ -1,0 +1,21 @@
+.img-employe > img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.mat-card-actions, .mat-card-subtitle, .mat-card-content {
+    margin-bottom: 0;
+}
+
+.card-button-text{
+    display: none;
+}
+
+@media (min-width: 576px) {
+    .card-button-text{
+        display: inline-block;
+    }
+}

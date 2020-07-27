@@ -1,1 +1,32 @@
-<p>employes-list works!</p>
+<div class="row">
+    <div class="col-xl-12 mb-4">
+        <mat-card class="d-flex justify-content-between align-items-center">
+            <div class="h4 d-flex align-items-center mb-0 text-truncate">
+                <mat-icon class="mr-2">person_add</mat-icon> Agregar nuevo empleado
+            </div>
+            <button mat-raised-button routerLink="/empleados/crear"><mat-icon>add</mat-icon> Crear</button>
+        </mat-card>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 mb-4" *ngFor="let employe of employes$ | async">
+        <mat-card class="w-100">
+           <div class="row">
+                <div class="col-xl-12">
+                    <div class="img-employe text-center">
+                        <img [src]="'http://localhost:4000/' + employe.profile" alt="">
+                    </div>
+                </div>
+                <div class="col-xl-12 mt-4">
+                    <div class="name-employe text-center">
+                        <div class="h5 text-truncate">{{employe.name}} {{employe.last}}</div>
+                    </div>
+                </div>
+                <div class="col-xl-12 mt-2">
+                    <mat-card-actions class="d-flex justify-content-between">
+                        <button mat-raised-button><mat-icon>edit</mat-icon> <span class="card-button-text">Editar</span></button>
+                        <button mat-raised-button><mat-icon>delete</mat-icon> <span class="card-button-text">Eliminar</span></button>
+                      </mat-card-actions>
+                </div>
+           </div> 
+        </mat-card>
+      </div>
+</div>
