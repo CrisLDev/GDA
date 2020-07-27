@@ -14,6 +14,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [],
@@ -30,7 +31,8 @@ import {MatListModule} from '@angular/material/list';
     MatFormFieldModule,
     MatInputModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatDatepickerModule
   ],
   exports: [
     MatIconModule,
@@ -44,7 +46,8 @@ import {MatListModule} from '@angular/material/list';
     MatFormFieldModule,
     MatInputModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatDatepickerModule
   ]
 })
 export class MaterialModule { }

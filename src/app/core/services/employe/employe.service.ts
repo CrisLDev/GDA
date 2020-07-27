@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Employe} from '@shared/interfaces/Employes/Employe';
+import {Employe, EmployeAdd} from '@shared/interfaces/Employes/Employe';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +21,7 @@ export class EmployeService {
   }
 
   createEmploye(employe: Employe): Observable<Employe>{
+    console.log(employe);
     return this.http.post<Employe>(this.URI, employe);
   }
 
