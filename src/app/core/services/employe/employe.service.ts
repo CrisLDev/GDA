@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Employe, EmployeAdd} from '@shared/interfaces/Employes/Employe';
+import {Employe} from '@shared/interfaces/Employes/Employe';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,17 @@ export class EmployeService {
   }
 
   createEmploye(employe: Employe): Observable<Employe>{
-    console.log(employe);
-    return this.http.post<Employe>(this.URI, employe);
+    const fd = new FormData();
+    fd.append('name', employe.name);
+    fd.append('last', employe.last);
+    fd.append('email', employe.email);
+    fd.append('age', employe.age);
+    fd.append('date', employe.date);
+    fd.append('direction', employe.direction);
+    fd.append('dni', employe.dni);
+    fd.append('city', employe.city);
+    fd.append('image', employe.profile);
+    return this.http.post<Employe>(this.URI, fd);
   }
 
 }

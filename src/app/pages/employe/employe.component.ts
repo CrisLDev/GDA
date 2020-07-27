@@ -36,15 +36,12 @@ export class EmployeComponent implements OnInit {
 
   getEmployes() {
     this.employes$ = this.store.pipe(select(selectEmployes));
-
-    console.log(this.employe$);
   }
 
   getEmploye(employe: Employe) {
     this.store.dispatch(fromActions.getEmploye({ id: employe._id }));
 
     this.employe$ = this.store.pipe(select(selectedEmploye));
-    console.log(this.employe$);
   }
 
   goToEditar(tabName: string, employe: Employe) {

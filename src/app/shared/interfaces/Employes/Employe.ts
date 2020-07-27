@@ -4,22 +4,9 @@ export interface Employe{
     last: string;
     email: string;
     age: string;
-    date: Date;
+    date: any;
     direction: string;
-    dni: number;
+    dni: any;
     city: string;
-    profile: string;
-}
-
-export interface EmployeAdd{
-    _id: string;
-    name: string;
-    last: string;
-    email: string;
-    age: string;
-    date: Date;
-    direction: string;
-    dni: number;
-    city: string;
-    profile: File;
+    profile: any;
 }

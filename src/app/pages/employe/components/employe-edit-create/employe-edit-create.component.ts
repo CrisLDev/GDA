@@ -35,7 +35,7 @@ export class EmployeEditCreateComponent implements OnInit {
     this.employeForm = this.fb.group({
       name: [''],
       last: [''],
-      profile: this.file,
+      profile: [''],
       age: [''],
       dni: [''],
       direction: [''],
@@ -46,8 +46,9 @@ export class EmployeEditCreateComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.employeForm.value);
+    this.employeForm.value.profile = this.file;
     this.store.dispatch(fromActions.createEmploye({employe: this.employeForm.value}));
+    this.employeForm.reset();
   }
 
   // Verificando si estan subiendo 1 foto

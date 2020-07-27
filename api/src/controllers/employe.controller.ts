@@ -38,7 +38,8 @@ export async function createEmploye(req: Request, res:Response): Promise<Respons
     await employe.save();
 
     return res.json({
-        message:'Employe successfully saved'
+        message:'Employe successfully saved',
+        employe
     })
 };
 
