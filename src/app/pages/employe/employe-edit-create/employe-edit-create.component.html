@@ -7,7 +7,7 @@
               <input
                 class="d-none"
                 type="file"
-                formControlName="file"
+                formControlName="profile"
                 required
                 #photoInput
                 (change)="onPhotoSelected($event)"
@@ -21,11 +21,11 @@
                         <mat-label>Ingresa tu nombre</mat-label>
                         <input
                           matInput
-                          placeholder="Nombre"
-                          type="text"
+                          placeholder="name"
                           maxlength="30"
                           minlength="10"
                           formControlName="name"
+                          [value]="employe?.name || ''"
                           required
                         />
                         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
