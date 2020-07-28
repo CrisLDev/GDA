@@ -6,7 +6,7 @@ import { EmployeService } from '@app/core/services/employe/employe.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { selectedEmploye } from '@app/core/ngrx/selectors/employe.selectors';
 import * as fromActions from "@core/ngrx/actions/employe.actions";
-import { Employe } from "@shared/interfaces/Employes/Employe";
+import { Employe } from "@app/shared/clases/Employes/Employe";
 import { Update } from '@ngrx/entity';
 
 interface HtmlInputEvent extends Event{

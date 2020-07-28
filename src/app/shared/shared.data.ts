@@ -1,4 +1,4 @@
-import {List} from '@shared/interfaces/interfaces';
+import {List} from '@app/shared/clases/clases';
 
 export const MENU: List[] = [
     { name: 'Empleados', link: '/empleados', icon: 'face' },

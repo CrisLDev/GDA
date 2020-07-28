@@ -5,7 +5,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from "rxjs";
 import * as fromActions from "@core/ngrx/actions/employe.actions";
 import { selectEmployes } from '@app/core/ngrx/selectors/employe.selectors';
-import { Employe } from '@app/shared/interfaces/Employes/Employe';
+import { Employe } from '@app/shared/clases/Employes/Employe';
 
 @Component({
   selector: 'app-employes-list',

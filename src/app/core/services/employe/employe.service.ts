@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Employe} from '@shared/interfaces/Employes/Employe';
+import {Employe} from '@app/shared/clases/Employes/Employe';
 import { FILE } from 'dns';
 
 @Injectable({

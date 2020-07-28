@@ -6,7 +6,7 @@ import { EmployeService } from '@app/core/services/employe/employe.service';
 import * as fromActions from "@core/ngrx/actions/employe.actions";
 import { selectedEmploye } from '@app/core/ngrx/selectors/employe.selectors';
 import { Observable } from 'rxjs';
-import { Employe } from '@app/shared/interfaces/Employes/Employe';
+import { Employe } from '@app/shared/clases/Employes/Employe';
 
 @Component({
   selector: 'app-employe',
