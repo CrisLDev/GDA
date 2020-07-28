@@ -52,7 +52,10 @@ const employeReducer = createReducer(
       ...state,
       error: action.error
     }
-  })
+  }),
+  on(EmployeActions.updateEmploye, (state, action) =>
+    adapter.updateOne(action.employe, state)
+  )
 );
 
 export function reducer(state: EmployeState | undefined, action: Action){

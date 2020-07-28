@@ -30,5 +30,8 @@ export class EmployesListComponent implements OnInit {
     this.employes$ = this.store.pipe(select(selectEmployes));
   }
 
+  selectedEmploye(id:string){
+    this.router.navigate(['/editar', id]);
+  }
 
 }

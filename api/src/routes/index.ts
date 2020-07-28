@@ -13,6 +13,6 @@ router.route('/employes')
 router.route('/employes/:id')
     .get(getEmploye)
     .delete(deleteEmploye)
-    .put(updateEmploye);
+    .put(multer.single('image'), updateEmploye);
 
 export default router;

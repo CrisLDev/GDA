@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Employe} from '@shared/interfaces/Employes/Employe';
+import { FILE } from 'dns';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,21 @@ export class EmployeService {
     fd.append('city', employe.city);
     fd.append('image', employe.profile);
     return this.http.post<Employe>(this.URI, fd);
+  }
+
+  editEmploye( employeId: string | number, changes: Partial<Employe>): Observable<Employe> {
+    console.log(employeId, changes);
+    const fd = new FormData();
+    fd.append('name', changes.name);
+    fd.append('last', changes.last);
+    fd.append('email', changes.email);
+    fd.append('age', changes.age);
+    fd.append('date', changes.date);
+    fd.append('direction', changes.direction);
+    fd.append('dni', changes.dni);
+    fd.append('city', changes.city);
+    fd.append('image', changes.profile);
+    return this.http.put<Employe>(this.URI + employeId, fd);
   }
 
 }

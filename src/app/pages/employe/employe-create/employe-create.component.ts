@@ -11,11 +11,11 @@ interface HtmlInputEvent extends Event{
 }
 
 @Component({
-  selector: 'app-employe-edit-create',
-  templateUrl: './employe-edit-create.component.html',
-  styleUrls: ['./employe-edit-create.component.css']
+  selector: 'app-employe-create',
+  templateUrl: './employe-create.component.html',
+  styleUrls: ['./employe-create.component.css']
 })
-export class EmployeEditCreateComponent implements OnInit {
+export class EmployeCreateComponent implements OnInit {
 
   employeForm: FormGroup;
 

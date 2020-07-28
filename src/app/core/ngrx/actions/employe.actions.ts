@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Employe } from "@shared/interfaces/Employes/Employe";
+import { Update } from '@ngrx/entity';
 
 // Get all employes
 export const getEmployes = createAction(
@@ -46,4 +47,10 @@ export const createEmployeSuccess = createAction(
 export const createEmployeFailure = createAction(
   '[Create Employe Effect Failure] Create Employe Failure',
   props<{error: any}>()
+);
+
+// Edit Component
+export const updateEmploye = createAction(
+  "[Employe Edit Component] Update Employe",
+  props<{ employe: Update<Employe> }>()
 );

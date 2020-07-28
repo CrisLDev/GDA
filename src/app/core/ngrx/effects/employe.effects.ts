@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 
 import * as EmployeActions from '../actions/employe.actions';
-import {map, mergeMap, catchError, tap} from 'rxjs/operators';
+import {map, mergeMap, catchError, tap, concatMap} from 'rxjs/operators';
 import {EmployeService} from '@core/services/employe/employe.service';
 import { Router } from '@angular/router';
 
@@ -57,6 +57,21 @@ export class EmployeEffects {
         ),
       tap(() => this.router.navigate(['/empleados']))
       )
+    );
+
+    updateEmploye$ = createEffect(
+      () =>
+        this.actions.pipe(
+          ofType(EmployeActions.updateEmploye),
+          concatMap(action =>
+            this.employeService.editEmploye(
+              action.employe.id,
+              action.employe.changes
+            )
+          ),
+          tap(() => this.router.navigate(['/empleados']))
+        ),
+      { dispatch: false }
     );
 
 }
