@@ -24,6 +24,7 @@ export class EmployeService {
     const fd = new FormData();
     fd.append('name', employe.name);
     fd.append('last', employe.last);
+    fd.append('position', employe.position);
     fd.append('email', employe.email);
     fd.append('age', employe.age);
     fd.append('date', employe.date);
@@ -39,6 +40,7 @@ export class EmployeService {
     const fd = new FormData();
     fd.append('name', changes.name);
     fd.append('last', changes.last);
+    fd.append('position', changes.position);
     fd.append('email', changes.email);
     fd.append('age', changes.age);
     fd.append('date', changes.date);

@@ -38,6 +38,7 @@ export class EmployeEditComponent implements OnInit {
     this.employeEditForm = this.fb.group({
       name: [''],
       last: [''],
+      position: [''],
       profile: [''],
       age: [''],
       dni: [''],

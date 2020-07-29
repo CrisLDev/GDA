@@ -35,6 +35,7 @@ export class EmployeCreateComponent implements OnInit {
     this.employeForm = this.fb.group({
       name: [''],
       last: [''],
+      position: [''],
       profile: [''],
       age: [''],
       dni: [''],
