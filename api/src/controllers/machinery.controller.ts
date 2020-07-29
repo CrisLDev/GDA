@@ -4,75 +4,69 @@ import path from 'path';
 
 import fs from 'fs-extra';
 
-import Employe from '../models/Employes';
+import Machinery from '../models/Machinery';
 
-export async function getEmployes(req: Request, res:Response): Promise<Response> {
-    const employes = await Employe.find();
+export async function getMachineries(req: Request, res:Response): Promise<Response> {
+    const machineries = await Machinery.find();
 
-    return res.json(employes);
+    return res.json(machineries);
 };
 
-export async function getEmploye(req: Request, res:Response): Promise<Response> {
-    const employe = await Employe.findById(req.params.id);
+export async function getMachinery(req: Request, res:Response): Promise<Response> {
+    const machinery = await Machinery.findById(req.params.id);
 
-    return res.json(employe);
+    return res.json(machinery);
 };
 
-export async function createEmploye(req: Request, res:Response): Promise<Response> {
-    const {name, last, email, age, date, direction, dni, city} = req.body;
+export async function createMachinery(req: Request, res:Response): Promise<Response> {
+    const {name, brand, weight, status, description} = req.body;
 
-    const newEmploye = {
-        name: name,
-        last: last,
-        email: email,
-        age: age,
-        date: date,
-        direction: direction,
-        dni: dni,
-        city: city,
-        profile: req.file.path
+    const newMachinery = {
+        name: name, 
+        brand: brand, 
+        weight: weight, 
+        status: status, 
+        description: description,
+        image: req.file.path
     };
 
-    const employe = new Employe(newEmploye);
+    const machinery = new Machinery(newMachinery);
 
-    await employe.save();
+    await machinery.save();
 
     return res.json({
-        message:'Employe successfully saved',
-        employe
-    })
+        message:'Machinery successfully saved',
+        machinery    
+    });
 };
 
-export async function deleteEmploye(req: Request, res:Response): Promise<Response> {
-    const employe = await Employe.findByIdAndRemove(req.params.id);
-    if (employe){
-        fs.unlink(path.resolve(employe.profile));
+export async function deleteMachinery(req: Request, res:Response): Promise<Response> {
+    const machinery = await Machinery.findByIdAndRemove(req.params.id);
+    if (machinery){
+        fs.unlink(path.resolve(machinery.image));
     }
     return res.json({
-    message: 'Employe deleted',
-    employe
+    message: 'Machinery deleted',
+    machinery
 });
 };
 
-export async function updateEmploye(req: Request, res:Response): Promise<Response> {
-    const {name, last, email, age, date, direction, dni, city} = req.body;
+export async function updateMachinery(req: Request, res:Response): Promise<Response> {
+    const {name, brand, weight, status, description} = req.body;
 
-    const editData = {
-        name, 
-        last, 
-        email, 
-        age, 
-        date, 
-        direction, 
-        dni,
-        city
-    }
+    const editMachinery = {
+        name: name, 
+        brand: brand, 
+        weight: weight, 
+        status: status, 
+        description: description,
+    };
 
     if(req.file){
-        Object.assign(editData, {profile: req.file.path});
+        Object.assign(editMachinery, {image: req.file.path});
     }
 
-    const updatedEmploye = await Employe.findByIdAndUpdate(req.params.id, editData, {new: true});
+    const updatedMachinery = await Machinery.findByIdAndUpdate(req.params.id, editMachinery, {new: true});
 
-    return res.json(updatedEmploye);
+    return res.json(updateMachinery);
 };
