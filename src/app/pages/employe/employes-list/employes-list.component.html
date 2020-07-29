@@ -21,6 +21,11 @@
                     </div>
                 </div>
                 <div class="col-xl-12 mt-2">
+                    <div class="name-employe text-center">
+                        <div class="h5 text-truncate greyColor">{{employe.position}}</div>
+                    </div>
+                </div>
+                <div class="col-xl-12 mt-2">
                     <mat-card-actions class="d-flex justify-content-between">
                         <button mat-raised-button [routerLink]="[employe._id]"><mat-icon>info</mat-icon> <span class="card-button-text">Más</span></button>
                         <button mat-raised-button (click)="deleteEmploye(employe._id)"><mat-icon>delete</mat-icon> <span class="card-button-text">Eliminar</span></button>
