@@ -49,4 +49,8 @@ export class EmployeService {
     return this.http.put<Employe>(this.URI + employeId, fd);
   }
 
+  deleteEmploye(employeId: string){
+    return this.http.delete(this.URI + employeId);
+  }
+
 }

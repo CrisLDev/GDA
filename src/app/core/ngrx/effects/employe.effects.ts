@@ -74,4 +74,19 @@ export class EmployeEffects {
       { dispatch: false }
     );
 
+    deleteEmploye$ = createEffect(() =>
+    this.actions.pipe(
+      ofType(EmployeActions.deleteEmploye),
+      mergeMap(action =>
+        this.employeService.deleteEmploye(action.id).pipe(
+          map(() => EmployeActions.deleteEmployeSuccess({ id: action.id })),
+          catchError(error =>
+            of(EmployeActions.deleteEmployeFailure({ error }))
+          )
+        )
+      ),
+      tap(() => this.router.navigate(['/empleados'])) // Not in Video 12
+    )
+  );
+
 }

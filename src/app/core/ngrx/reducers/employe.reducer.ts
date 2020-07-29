@@ -55,7 +55,16 @@ const employeReducer = createReducer(
   }),
   on(EmployeActions.updateEmploye, (state, action) =>
     adapter.updateOne(action.employe, state)
-  )
+  ),
+  on(EmployeActions.deleteEmployeSuccess, (state, action) =>
+    adapter.removeOne(action.id, state)
+  ),
+  on(EmployeActions.deleteEmployeFailure, (state, action) => {
+    return {
+      ...state,
+      error: action.error
+    };
+  })
 );
 
 export function reducer(state: EmployeState | undefined, action: Action){

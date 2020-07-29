@@ -54,3 +54,20 @@ export const updateEmploye = createAction(
   "[Employe Edit Component] Update Employe",
   props<{ employe: Update<Employe> }>()
 );
+
+//Delete Employe
+
+export const deleteEmploye = createAction(
+  "[Employe Components] Delete Employe",
+  props<{ id: string }>()
+);
+
+export const deleteEmployeSuccess = createAction(
+  "[Employe Delete Effect] Delete Employe Success",
+  props<{ id: string }>()
+);
+
+export const deleteEmployeFailure = createAction(
+  "[Employe Delete Effect] Delete Employe Failure",
+  props<{ error: any }>()
+  );

@@ -51,6 +51,21 @@
           </div>
       </div>
       <div class="col-xl-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Ingresa tu dirección</mat-label>
+          <input
+            matInput
+            placeholder="Dirección"
+            maxlength="30"
+            minlength="10"
+            type="text"
+            formControlName="direction"
+            required
+          />
+          <mat-icon matSuffix>place</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col-xl-12">
         <div class="row">
           <div class="col-xl-6">
             <mat-form-field appearance="outline">
@@ -69,17 +84,17 @@
           </div>
           <div class="col-xl-6">
             <mat-form-field appearance="outline">
-              <mat-label>Ingresa tu dirección</mat-label>
+              <mat-label>Ingresa tu cargo</mat-label>
               <input
                 matInput
-                placeholder="Dirección"
-                maxlength="30"
-                minlength="10"
+                placeholder="Cargo"
+                maxlength="15"
+                minlength="5"
                 type="text"
-                formControlName="direction"
+                formControlName="cargo"
                 required
               />
-              <mat-icon matSuffix>place</mat-icon>
+              <mat-icon matSuffix>rowing</mat-icon>
             </mat-form-field>
           </div>
         </div>

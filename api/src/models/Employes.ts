@@ -3,6 +3,7 @@ import {Schema, model, Document} from 'mongoose';
 const schema = new Schema({
     name: String,
     last: String,
+    position: String,
     email: String,
     age: String,
     date: Date,
@@ -15,6 +16,7 @@ const schema = new Schema({
 interface IEmploye extends Document{
     name: string;
     last: string;
+    position: string;
     email:string;
     age: string;
     date: Date;

@@ -34,4 +34,9 @@ export class EmployesListComponent implements OnInit {
     this.router.navigate(['/editar', id]);
   }
 
+  deleteEmploye(id: string) {
+    console.log(id)
+    this.store.dispatch(fromActions.deleteEmploye({ id }));
+  }
+
 }

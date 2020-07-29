@@ -19,11 +19,12 @@ export async function getEmploye(req: Request, res:Response): Promise<Response> 
 };
 
 export async function createEmploye(req: Request, res:Response): Promise<Response> {
-    const {name, last, email, age, date, direction, dni, city} = req.body;
+    const {name, last, position, email, age, date, direction, dni, city} = req.body;
 
     const newEmploye = {
         name: name,
         last: last,
+        position: position,
         email: email,
         age: age,
         date: date,
@@ -55,11 +56,12 @@ export async function deleteEmploye(req: Request, res:Response): Promise<Respons
 };
 
 export async function updateEmploye(req: Request, res:Response): Promise<Response> {
-    const {name, last, email, age, date, direction, dni, city} = req.body;
+    const {name, last, email, position, age, date, direction, dni, city} = req.body;
 
     const editData = {
         name, 
         last, 
+        position,
         email, 
         age, 
         date, 
