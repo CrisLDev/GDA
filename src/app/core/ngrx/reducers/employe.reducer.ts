@@ -11,7 +11,8 @@ export interface EmployeState extends EntityState<Employe> {
 };
 
 export const adapter: EntityAdapter<Employe> = createEntityAdapter<Employe>({
-  selectId: (employes: Employe) => employes._id
+  selectId: (employe: Employe) => employe._id,
+  sortComparer: false
 });
 
 export const initialState = adapter.getInitialState({

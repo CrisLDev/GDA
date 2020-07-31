@@ -36,7 +36,6 @@ export class EmployeService {
   }
 
   editEmploye( employeId: string | number, changes: Partial<Employe>): Observable<Employe> {
-    console.log(employeId, changes);
     const fd = new FormData();
     fd.append('name', changes.name);
     fd.append('last', changes.last);
