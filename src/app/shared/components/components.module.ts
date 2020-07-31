@@ -4,16 +4,18 @@ import { CommonModule } from '@angular/common';
 // Modules
 import {SharedModule} from '../shared.module';
 import {LayoutModule} from './layout/layout.module';
+import { Error404Component } from './error404/error404.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [Error404Component],
   imports: [
     CommonModule,
     SharedModule,
     LayoutModule
   ],
   exports: [
-    LayoutModule
+    LayoutModule,
+    Error404Component
   ]
 })
 export class ComponentsModule { }
