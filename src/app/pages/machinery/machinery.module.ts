@@ -6,13 +6,17 @@ import { MachineryCreateComponent } from './machinery-create/machinery-create.co
 import { MachineryEditComponent } from './machinery-edit/machinery-edit.component';
 import { MachineryComponent } from './machinery/machinery.component';
 
-
+// Modules
+import {SharedModule} from '@shared/shared.module';
+import {LayoutModule} from '@shared/components/layout/layout.module';
 
 @NgModule({
   declarations: [MachineryListComponent, MachineryCreateComponent, MachineryEditComponent, MachineryComponent],
   imports: [
     CommonModule,
-    MachineryRouting
+    MachineryRouting,
+    SharedModule,
+    LayoutModule
   ]
 })
 export class MachineryModule { }
