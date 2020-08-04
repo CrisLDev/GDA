@@ -1,3 +1,57 @@
-<p>machinery-list works!</p>
-
-<button routerLink="/maquinarias/crear">vamo a crear</button>
+<div class="col-xl-12 mb-4">
+    <mat-card class="d-flex justify-content-between align-items-center">
+        <div class="h4 d-flex align-items-center mb-0 text-truncate">
+            <mat-icon class="mr-2">local_shipping</mat-icon> Agregar nueva maquinaria
+        </div>
+        <button mat-raised-button routerLink="/maquinarias/crear"><mat-icon>add</mat-icon> Crear</button>
+    </mat-card>
+</div>
+<div class="row">
+    <div class="col-xl-3" *ngFor="let machinery of machineries$ | async">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title class="d-flex align-items-center mb-1" style="margin: 0 -16px 16px -16px;">
+                    <mat-icon class="mr-2">local_shipping</mat-icon>
+                    {{machinery.name}}
+                </mat-card-title>
+                <mat-card-subtitle class="mb-0">
+                    <span class="pl-3">{{machinery.brand}}</span>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image class="machinery-image" [src]="'http://localhost:4000/' + machinery.image" alt="">
+            <mat-card-content class="mb-0">
+                <div id="description-machinery">
+                    <p class="text-truncate font-weight-bold d-flex align-items-end" style="margin: 0 -16px 0px -10px;">
+                        <mat-icon> short_text</mat-icon>
+                        Descripción
+                    </p>
+                    <p class="text-truncate greyColor" [title]="machinery.description">
+                      {{machinery.description}}
+                    </p>
+                </div>
+                <div id="weight-machinery">
+                    <p class="text-truncate font-weight-bold d-flex align-items-end" style="margin: 0 -16px 0px -10px;">
+                        <mat-icon> equalizer</mat-icon>
+                        Peso
+                    </p>
+                    <p class="text-truncate greyColor">
+                      {{machinery.weight}}
+                    </p>
+                </div>
+                <div id="weight-machinery">
+                    <p class="text-truncate font-weight-bold d-flex align-items-end" style="margin: 0 -16px 0px -10px;" [ngClass]="(machinery.status=='Disponible')?'Avalilable':'No-Available'">
+                        <mat-icon>event_available</mat-icon>
+                        Disponibilidad
+                    </p>
+                    <p class="text-truncate" [ngClass]="(machinery.status=='Disponible')?'Avalilable':'No-Available'">
+                      {{machinery.status}}
+                    </p>
+                </div>
+              </mat-card-content>
+              <mat-card-actions class="pt-0 d-flex justify-content-between">
+                <button mat-button>EDITAR</button>
+                <button mat-button>ELIMINAR</button>
+              </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

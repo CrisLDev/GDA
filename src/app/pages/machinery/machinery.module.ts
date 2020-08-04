@@ -11,6 +11,7 @@ import {SharedModule} from '@shared/shared.module';
 import {LayoutModule} from '@shared/components/layout/layout.module';
 import { StoreModule } from '@ngrx/store';
 import * as fromMachinery from '@core/ngrx/reducers/machinery.reducer'
+import { MachineryService } from '@app/core/services/machinery.service';
 
 @NgModule({
   declarations: [MachineryListComponent, MachineryCreateComponent, MachineryEditComponent, MachineryComponent],
@@ -20,6 +21,7 @@ import * as fromMachinery from '@core/ngrx/reducers/machinery.reducer'
     SharedModule,
     LayoutModule,
     StoreModule.forFeature(fromMachinery.machineryFeatureKey, fromMachinery.reducer)
-  ]
+  ],
+  providers: [MachineryService]
 })
 export class MachineryModule { }

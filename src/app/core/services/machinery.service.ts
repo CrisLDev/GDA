@@ -24,4 +24,8 @@ export class MachineryService {
     return this.http.post<Machinery>(this.URI, fd);
   }
 
+  getMachineries(): Observable<Machinery[]>{
+    return this.http.get<Machinery[]>(this.URI);
+  }
+
 }

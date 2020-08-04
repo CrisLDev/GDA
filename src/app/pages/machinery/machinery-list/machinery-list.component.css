@@ -1,0 +1,11 @@
+.Avalilable{
+    color: green!important;
+}
+
+.No-Available{
+    color: red!important;
+}
+
+.machinery-image{
+    max-height: 118px;
+}

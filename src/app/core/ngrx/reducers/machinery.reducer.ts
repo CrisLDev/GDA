@@ -33,6 +33,18 @@ export const machineryReducer = createReducer(
         error: action.error
       }
     }
+  ),
+
+  // Get machineries
+  on(MachineryActions.getMachineriesSuccess, (state, action) => 
+    adapter.addAll(action.machineries, state)
+  ),
+  on(MachineryActions.getMachineriesFailure, (state, action) =>{
+      return {
+        ...state,
+        error: action.error
+      }
+    }
   )
 );
 

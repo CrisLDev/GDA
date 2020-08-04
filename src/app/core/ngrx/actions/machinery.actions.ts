@@ -3,16 +3,16 @@ import { Machinery } from '@app/shared/clases/Machinery/machinery';
 
 // Get all machineries
 export const getMachineries = createAction(
-  '[Machinery List Component] Load Machinerys'
+  '[Machinery List Component] Get all Machineries'
 );
 
-export const getMachinerysSuccess = createAction(
-  '[Machinery] Load Machinerys Success',
-  props<{ data: any }>()
+export const getMachineriesSuccess = createAction(
+  '[Machinery Effect] Get All Machineries Success',
+  props<{ machineries: Machinery[] }>()
 );
 
-export const getMachinerysFailure = createAction(
-  '[Machinery] Load Machinerys Failure',
+export const getMachineriesFailure = createAction(
+  '[Machinery Effect] Get All Machineries Failure',
   props<{ error: any }>()
 );
 

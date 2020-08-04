@@ -30,4 +30,19 @@ export class MachineryEffects {
     )
   );
 
+  // Get Machineries
+  loadMachineries$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(machineryActions.getMachineries),
+    mergeMap(action =>
+      this.machineryService.getMachineries().pipe(
+        map(machineries => machineryActions.getMachineriesSuccess({machineries})),
+        catchError(error =>
+          of(machineryActions.getMachineriesFailure({error}))
+          )
+        )
+      )
+    )
+  );
+
 }
