@@ -61,7 +61,14 @@ export const machineryReducer = createReducer(
       error: action.error
     }
   }
-  )
+  ),
+
+  // Edit Machinery
+  on(MachineryActions.updateMachinery, (state, action) =>
+    adapter.updateOne(action.machinery, state)
+  ),
+
+  // Delete Machinery
 );
 
 export function reducer(state: MachineryState | undefined, action: Action){

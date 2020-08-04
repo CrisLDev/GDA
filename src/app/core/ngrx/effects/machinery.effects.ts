@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { MachineryService } from '@app/core/services/machinery.service';
 import * as machineryActions from '@core/ngrx/actions/machinery.actions';
-import { map, tap, mergeMap, catchError } from 'rxjs/operators';
+import { map, tap, mergeMap, catchError, concatMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -56,5 +56,21 @@ export class MachineryEffects {
           of(machineryActions.getMachineryFailure({error})))
       ))
   ));
+
+  // Update Machinery
+  updateMachinery$ = createEffect(
+  () =>
+  this.actions$.pipe(
+    ofType(machineryActions.updateMachinery),
+    concatMap(action =>
+      this.machineryService.editMachinery(
+        action.machinery.id,
+        action.machinery.changes
+      )
+    ),
+    tap(() => this.router.navigate(['/maquinarias']))
+  ),
+  {dispatch: false}
+  );
 
 }

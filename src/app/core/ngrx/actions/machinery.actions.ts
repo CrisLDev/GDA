@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Machinery } from '@app/shared/clases/Machinery/machinery';
+import { Update } from '@ngrx/entity';
 
 // Get all machineries
 export const getMachineries = createAction(
@@ -46,4 +47,10 @@ export const createMachinerySuccess = createAction(
 export const createMachineryFailure = createAction(
   '[Create Machinery Effect Failure] Create Machinery Failure',
   props<{error: any}>()
+);
+
+// Edit Machinery
+export const updateMachinery = createAction(
+  '[Machinery Edit Component] Update Machinery',
+  props<{machinery: Update<Machinery>}>()
 );

@@ -6,5 +6,5 @@ export class Machinery{
     status: string;
     dateRegister: Date;
     description: string;
-    image: string;
+    image: any;
 }

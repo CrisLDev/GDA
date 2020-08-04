@@ -32,4 +32,16 @@ export class MachineryService {
     return this.http.get<Machinery>(this.URI + machineryId);
   }
 
+  editMachinery(machineryId: string | number, changes: Partial<Machinery>): Observable<Machinery>{
+    const fd = new FormData();
+    fd.append('name', changes.name);
+    fd.append('brand', changes.brand);
+    fd.append('weight', changes.weight);
+    fd.append('status', changes.status);
+    fd.append('description', changes.description);
+    fd.append('image', changes.image);
+
+    return this.http.put<Machinery>(this.URI + machineryId, fd);
+  }
+
 }
