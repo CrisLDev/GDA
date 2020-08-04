@@ -52,6 +52,8 @@ export async function deleteMachinery(req: Request, res:Response): Promise<Respo
 };
 
 export async function updateMachinery(req: Request, res:Response): Promise<Response> {
+    const machinery = await Machinery.findById(req.params.id);
+
     const {name, brand, weight, status, description} = req.body;
 
     const editMachinery = {
@@ -64,6 +66,9 @@ export async function updateMachinery(req: Request, res:Response): Promise<Respo
 
     if(req.file){
         Object.assign(editMachinery, {image: req.file.path});
+        if(machinery){
+            fs.unlink(path.resolve(machinery.image))
+        }
     }
 
     const updatedMachinery = await Machinery.findByIdAndUpdate(req.params.id, editMachinery, {new: true});

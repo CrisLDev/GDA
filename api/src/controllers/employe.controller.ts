@@ -56,6 +56,8 @@ export async function deleteEmploye(req: Request, res:Response): Promise<Respons
 };
 
 export async function updateEmploye(req: Request, res:Response): Promise<Response> {
+    const employe = await Employe.findById(req.params.id);
+
     const {name, last, email, position, age, date, direction, dni, city} = req.body;
 
     const editData = {
@@ -72,6 +74,9 @@ export async function updateEmploye(req: Request, res:Response): Promise<Respons
 
     if(req.file){
         Object.assign(editData, {profile: req.file.path});
+        if(employe){
+            fs.unlink(path.resolve(employe.profile))
+        }
     }
 
     const updatedEmploye = await Employe.findByIdAndUpdate(req.params.id, editData, {new: true});
