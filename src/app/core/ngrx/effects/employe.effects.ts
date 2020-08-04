@@ -10,13 +10,13 @@ import { Router } from '@angular/router';
 @Injectable()
 export class EmployeEffects {
 
-  constructor(private actions: Actions,
+  constructor(private actions$: Actions,
               private employeService: EmployeService,
               private router: Router) {}
 
   // Get Employes
   loadEmployes$ = createEffect(() => 
-  this.actions.pipe(
+  this.actions$.pipe(
       ofType(EmployeActions.getEmployes),
       mergeMap(action =>
         this.employeService.getEmployes().pipe(
@@ -31,7 +31,7 @@ export class EmployeEffects {
 
     // Get Employe
   loadEmploye$ = createEffect(() => 
-  this.actions.pipe(
+  this.actions$.pipe(
       ofType(EmployeActions.getEmploye),
       mergeMap(action =>
         this.employeService.getEmploye(action.id).pipe(
@@ -46,7 +46,7 @@ export class EmployeEffects {
 
     // Create Employe
     createEmploye$ = createEffect(() =>
-      this.actions.pipe(
+      this.actions$.pipe(
         ofType(EmployeActions.createEmploye),
         mergeMap(action =>
           this.employeService.createEmploye(action.employe).pipe(
@@ -61,7 +61,7 @@ export class EmployeEffects {
 
     updateEmploye$ = createEffect(
       () =>
-        this.actions.pipe(
+        this.actions$.pipe(
           ofType(EmployeActions.updateEmploye),
           concatMap(action =>
             this.employeService.editEmploye(
@@ -75,7 +75,7 @@ export class EmployeEffects {
     );
 
     deleteEmploye$ = createEffect(() =>
-    this.actions.pipe(
+    this.actions$.pipe(
       ofType(EmployeActions.deleteEmploye),
       mergeMap(action =>
         this.employeService.deleteEmploye(action.id).pipe(

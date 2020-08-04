@@ -21,7 +21,7 @@ export const initialState = adapter.getInitialState({
 });
 
 
-export const reducer = createReducer(
+export const machineryReducer = createReducer(
   initialState,
   // Create Macinery
   on(MachineryActions.createMachinerySuccess, (state, action) => 
@@ -35,4 +35,15 @@ export const reducer = createReducer(
     }
   )
 );
+
+export function reducer(state: MachineryState | undefined, action: Action){
+  return machineryReducer(state, action);
+}
+
+export const {
+  selectIds,
+  selectEntities,
+  selectAll,
+  selectTotal
+} = adapter.getSelectors();
 

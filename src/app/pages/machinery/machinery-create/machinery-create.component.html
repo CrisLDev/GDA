@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <form (ngSubmit)="onSubmit()">
+    <form [formGroup]="machineryForm" (ngSubmit)="onSubmit()">
         <div class="row mt-3">
             <div class="col-xl-6">
                 <input
@@ -7,6 +7,7 @@
                 type="file"
                 required
                 #photoInput
+                formControlName="image"
                 (change)="onPhotoSelected($event)"
               />
                 <img class="img-fluid img-thumbnail" [src]="photoSelected || 'assets/no-image.png'" alt="image" (click)="photoInput.click()">
@@ -20,9 +21,10 @@
                         class="shadow-none"
                         matInput
                         placeholder="Nombre"
-                        maxlength="30"
-                        minlength="10"
+                        maxlength="15"
+                        minlength="5"
                         type="text"
+                        formControlName="name"
                         required
                       />
                       <mat-icon matSuffix>label</mat-icon>
@@ -35,8 +37,9 @@
                         class="shadow-none"
                         matInput
                         placeholder="Marca"
-                        maxlength="30"
-                        minlength="10"
+                        maxlength="10"
+                        minlength="2"
+                        formControlName="brand"
                         type="text"
                         required
                       />
@@ -50,9 +53,10 @@
                         class="shadow-none"
                         matInput
                         placeholder="Peso"
-                        maxlength="30"
-                        minlength="10"
+                        maxlength="5"
+                        minlength="3"
                         type="text"
+                        formControlName="weight"
                         required
                       />
                       <mat-icon matSuffix>equalizer</mat-icon>
@@ -65,9 +69,10 @@
                         class="shadow-none"
                         matInput
                         placeholder="Estado"
-                        maxlength="30"
-                        minlength="10"
+                        maxlength="15"
+                        minlength="5"
                         type="text"
+                        formControlName="status"
                         required
                       />
                       <mat-icon matSuffix>check_box</mat-icon>
@@ -76,7 +81,7 @@
                   <div class="col-xl-12">
                     <mat-form-field appearance="outline">
                       <mat-label>Ingresa una descripción</mat-label>
-                      <textarea matInput class="shadow-none"></textarea>
+                      <textarea matInput formControlName="description" class="shadow-none"></textarea>
                     </mat-form-field>
                   </div>
                   <div class="col-xl-12">

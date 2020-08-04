@@ -14,7 +14,13 @@ export class MachineryService {
 
   createMachinery(machinery: Machinery): Observable<Machinery>{
     const fd = new FormData();
-
+    fd.append('name', machinery.name);
+    fd.append('brand', machinery.brand);
+    fd.append('weight', machinery.weight);
+    fd.append('status', machinery.status);
+    fd.append('description', machinery.description);
+    fd.append('image', machinery.image);
+    console.log('hola gente');
     return this.http.post<Machinery>(this.URI, fd);
   }
 
