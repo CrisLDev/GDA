@@ -20,7 +20,7 @@ import { EmployeEditComponent } from './employe-edit/employe-edit.component';
     EmployeRouting,
     SharedModule,
     LayoutModule,
-    StoreModule.forFeature(fromEmploye.employeKey, fromEmploye.reducer)
+    StoreModule.forFeature(fromEmploye.employeFeatureKey, fromEmploye.reducer)
   ],
   providers: [EmployeService]
 })

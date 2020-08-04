@@ -3,7 +3,7 @@ import * as EmployeActions from '../actions/employe.actions';
 import {Employe} from '@app/shared/clases/Employes/Employe';
 import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
 
-export const employeKey = "employeState";
+export const employeFeatureKey = "employe";
 
 export interface EmployeState extends EntityState<Employe> {
   error: any;

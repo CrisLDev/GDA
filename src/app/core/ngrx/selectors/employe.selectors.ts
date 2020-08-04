@@ -1,8 +1,8 @@
-import { employeKey, EmployeState, selectAll } from '../reducers/employe.reducer';
+import { employeFeatureKey, EmployeState, selectAll } from '../reducers/employe.reducer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export const selectEmployeState = createFeatureSelector<EmployeState>(
-  employeKey
+  employeFeatureKey
 );
 
 export const selectEmployes = createSelector(selectEmployeState, selectAll);
