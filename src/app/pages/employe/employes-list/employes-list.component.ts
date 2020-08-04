@@ -30,10 +30,6 @@ export class EmployesListComponent implements OnInit {
     this.employes$ = this.store.pipe(select(selectEmployes));
   }
 
-  selectedEmploye(id:string){
-    this.router.navigate(['/editar', id]);
-  }
-
   deleteEmploye(id: string) {
     console.log(id)
     this.store.dispatch(fromActions.deleteEmploye({ id }));

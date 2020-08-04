@@ -28,4 +28,8 @@ export class MachineryService {
     return this.http.get<Machinery[]>(this.URI);
   }
 
+  getMachinery(machineryId: string): Observable<Machinery>{
+    return this.http.get<Machinery>(this.URI + machineryId);
+  }
+
 }

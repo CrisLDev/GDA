@@ -45,6 +45,22 @@ export const machineryReducer = createReducer(
         error: action.error
       }
     }
+  ),
+
+  // Get Machinery
+  on(MachineryActions.getMachinerySuccess, (state, action) =>{
+    return{
+      ...state,
+      selectedMachinery: action.selectedMachinery
+    }
+  }
+  ),
+  on(MachineryActions.getMachineryFailure, (state, action) =>{
+    return{
+      ...state,
+      error: action.error
+    }
+  }
   )
 );
 

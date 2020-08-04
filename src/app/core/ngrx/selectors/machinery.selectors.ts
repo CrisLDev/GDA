@@ -6,3 +6,7 @@ export const selectMachineryState = createFeatureSelector<MachineryState>(
 );
 
 export const selectMachineries = createSelector(selectMachineryState, selectAll);
+
+export const selectedMachinery = createSelector(selectMachineryState,
+    (state: MachineryState) => state.selectedMachinery
+);

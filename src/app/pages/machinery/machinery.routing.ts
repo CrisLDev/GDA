@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router'
 import { MachineryListComponent } from './machinery-list/machinery-list.component';
 import { MachineryCreateComponent } from './machinery-create/machinery-create.component';
+import { MachineryEditComponent } from './machinery-edit/machinery-edit.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'crear',
     component: MachineryCreateComponent
+  },
+  {
+    path: 'editar/:id',
+    component: MachineryEditComponent
   }
 ]
 

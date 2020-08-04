@@ -49,7 +49,7 @@
                 </div>
               </mat-card-content>
               <mat-card-actions class="pt-0 d-flex justify-content-between">
-                <button mat-button>EDITAR</button>
+                <button mat-button [routerLink]="['/maquinarias/editar', machinery._id]">EDITAR</button>
                 <button mat-button>ELIMINAR</button>
               </mat-card-actions>
         </mat-card>

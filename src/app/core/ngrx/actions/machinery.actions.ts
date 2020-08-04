@@ -16,6 +16,22 @@ export const getMachineriesFailure = createAction(
   props<{ error: any }>()
 );
 
+// Get Machinery
+export const getMachinery = createAction(
+  '[Machinery Create and Edit Component] Get Machinery',
+  props<{id: string}>()
+);
+
+export const getMachinerySuccess = createAction(
+  '[Machinery Effect Success] Get Machinery Success',
+  props<{selectedMachinery: Machinery}>()
+);
+
+export const getMachineryFailure = createAction(
+  '[Machinery Effects Failure] Get Machinery Failure',
+  props<{error: any}>()
+);
+
 // Create machinery
 export const createMachinery = createAction(
   '[Machinery component] Create Machiney',
