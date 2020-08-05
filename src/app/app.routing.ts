@@ -17,6 +17,11 @@ const routes: Routes = [
       name: 'maquinarias'
     }
   },
+  {path: 'horarios',
+    loadChildren: () => import('@pages/schedule/schedule.module').then(m => m.ScheduleModule), data: {
+      name: 'horarios'
+    }
+  },
   {path: '**', canActivate:[ErrorGuard], component: Error404Component}
 ];
 

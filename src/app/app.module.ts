@@ -11,8 +11,7 @@ import {ComponentsModule} from '@shared/components/components.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {CoreModule} from '@core/core.module';
-import { environment } from 'environments/environment';
-import { MachineryListComponent } from './pages/machinery/machinery-list/machinery-list.component';
+import { environment } from 'environments/environment'
 
 @NgModule({
   declarations: [

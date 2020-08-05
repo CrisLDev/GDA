@@ -8,6 +8,7 @@ const schema = new Schema({
     age: String,
     date: Date,
     direction: String,
+    dateRegister: {type: Date, default: Date.now},
     dni: Number,
     city: String,
     profile: String  
@@ -21,6 +22,7 @@ interface IEmploye extends Document{
     age: string;
     date: Date;
     direction: string;
+    dateRegister: Date,
     dni: number;
     city: string;
     profile: string;

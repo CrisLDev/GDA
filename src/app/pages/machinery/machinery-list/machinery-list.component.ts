@@ -28,4 +28,8 @@ export class MachineryListComponent implements OnInit {
     this.machineries$ = this.store.pipe(select(selectMachineries));
   }
 
+  deleteMachinery(id: string){
+    this.store.dispatch(fromActions.deleteMachinery({id}))
+  }
+
 }

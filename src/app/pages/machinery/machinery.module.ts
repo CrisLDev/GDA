@@ -4,7 +4,6 @@ import { MachineryListComponent } from './machinery-list/machinery-list.componen
 import { MachineryRouting } from './machinery.routing';
 import { MachineryCreateComponent } from './machinery-create/machinery-create.component';
 import { MachineryEditComponent } from './machinery-edit/machinery-edit.component';
-import { MachineryComponent } from './machinery/machinery.component';
 
 // Modules
 import {SharedModule} from '@shared/shared.module';
@@ -14,7 +13,7 @@ import * as fromMachinery from '@core/ngrx/reducers/machinery.reducer'
 import { MachineryService } from '@app/core/services/machinery.service';
 
 @NgModule({
-  declarations: [MachineryListComponent, MachineryCreateComponent, MachineryEditComponent, MachineryComponent],
+  declarations: [MachineryListComponent, MachineryCreateComponent, MachineryEditComponent],
   imports: [
     CommonModule,
     MachineryRouting,

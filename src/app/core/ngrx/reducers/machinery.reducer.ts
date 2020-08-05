@@ -69,6 +69,16 @@ export const machineryReducer = createReducer(
   ),
 
   // Delete Machinery
+  on(MachineryActions.deleteMachinerySuccess, (state, action) =>
+    adapter.removeOne(action.id, state)
+  ),
+  on(MachineryActions.deleteMachineryFailure, (state, action) =>{
+    return{
+      ...state,
+      error: action.error
+    }
+  }
+  )
 );
 
 export function reducer(state: MachineryState | undefined, action: Action){

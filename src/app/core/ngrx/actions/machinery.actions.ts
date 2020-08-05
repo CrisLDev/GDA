@@ -54,3 +54,19 @@ export const updateMachinery = createAction(
   '[Machinery Edit Component] Update Machinery',
   props<{machinery: Update<Machinery>}>()
 );
+
+// Delete Machinery
+export const deleteMachinery = createAction(
+  '[Machinery Component] Delete Machinery',
+  props<{id: string}>()
+);
+
+export const deleteMachinerySuccess = createAction(
+  '[Machinery Effect Delete Success] Delete Machinery Success',
+  props<{id: string}>()
+);
+
+export const deleteMachineryFailure = createAction(
+  '[Machinery Effect Delete Failure] Delete Machinery Failure',
+  props<{error: any}>()
+);

@@ -44,4 +44,8 @@ export class MachineryService {
     return this.http.put<Machinery>(this.URI + machineryId, fd);
   }
 
+  deleteMachinery(machineryId: string){
+    return this.http.delete(this.URI + machineryId)
+  }
+
 }
