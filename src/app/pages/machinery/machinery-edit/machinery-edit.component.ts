@@ -7,7 +7,7 @@ import * as fromActions from '@core/ngrx/actions/machinery.actions';
 import { ActivatedRoute } from '@angular/router';
 import { selectedMachinery } from '@app/core/ngrx/selectors/machinery.selectors';
 import { Update } from '@ngrx/entity';
-import { Machinery } from '@app/shared/clases/Machinery/Machinery';
+import { Machinery } from '@app/shared/classes/Machinery/Machinery';
 
 interface HtmlInputEvent extends Event{
   target: HTMLInputElement & EventTarget;

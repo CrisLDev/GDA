@@ -9,6 +9,8 @@ import { ScheduleRouting } from './schedule.routing';
 import { StoreModule } from '@ngrx/store';
 import * as fromMachinery from '@core/ngrx/reducers/machinery.reducer';
 import * as fromEmploye from '@core/ngrx/reducers/employe.reducer';
+import * as fromSchedule from '@core/ngrx/reducers/schedule.reducer';
+import { ScheduleService } from '@app/core/services/schedule/schedule.service';
 
 @NgModule({
   declarations: [ScheduleListComponent],
@@ -17,9 +19,10 @@ import * as fromEmploye from '@core/ngrx/reducers/employe.reducer';
     SharedModule,
     LayoutModule,
     ScheduleRouting,
+    StoreModule.forFeature(fromSchedule.scheduleFeatureKey, fromSchedule.reducer),
     StoreModule.forFeature(fromEmploye.employeFeatureKey, fromEmploye.reducer),
     StoreModule.forFeature(fromMachinery.machineryFeatureKey, fromMachinery.reducer)
   ],
-  providers: []
+  providers: [ScheduleService]
 })
 export class ScheduleModule { }

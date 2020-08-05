@@ -4,7 +4,7 @@ import { EmployeService } from '@app/core/services/employe/employe.service';
 import { Store } from '@ngrx/store';
 import { EmployeState } from '@app/core/ngrx/reducers/employe.reducer';
 import * as fromActions from '@core/ngrx/actions/employe.actions'
-import { Employe } from '@app/shared/clases/Employes/Employe';
+import { Employe } from '@app/shared/classes/Employes/Employe';
 
 interface HtmlInputEvent extends Event{
   target: HTMLInputElement & EventTarget;

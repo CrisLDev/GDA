@@ -1,6 +1,6 @@
 import { Action, createReducer, on} from '@ngrx/store';
 import * as EmployeActions from '../actions/employe.actions';
-import {Employe} from '@app/shared/clases/Employes/Employe';
+import {Employe} from '@app/shared/classes/Employes/Employe';
 import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
 
 export const employeFeatureKey = "employe";

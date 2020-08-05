@@ -15,7 +15,8 @@ export class ScheduleService {
   ) { }
 
   createSchedule(schedule: Schedule): Observable<Schedule>{
-    return this.http.get<Schedule>(this.URI);
+    console.log('aqui estamos');
+    return this.http.post<Schedule>(this.URI, schedule);
   }
 
 }

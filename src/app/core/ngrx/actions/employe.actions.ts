@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Employe } from "@app/shared/clases/Employes/Employe";
+import { Employe } from "@app/shared/classes/Employes/Employe";
 import { Update } from '@ngrx/entity';
 
 // Get all employes

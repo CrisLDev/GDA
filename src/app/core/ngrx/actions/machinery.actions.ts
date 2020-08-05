@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Machinery } from '@app/shared/clases/Machinery/machinery';
+import { Machinery } from '@app/shared/classes/Machinery/machinery';
 import { Update } from '@ngrx/entity';
 
 // Get all machineries

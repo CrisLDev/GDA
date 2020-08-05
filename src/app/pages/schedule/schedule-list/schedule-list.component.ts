@@ -5,11 +5,13 @@ import { Store, select } from '@ngrx/store';
 import * as fromActionsEmployes from "@core/ngrx/actions/employe.actions";
 import * as fromActionsMachineries from '@core/ngrx/actions/machinery.actions';
 import { Observable } from 'rxjs';
-import { Machinery } from '@app/shared/clases/Machinery/Machinery';
+import { Machinery } from '@app/shared/classes/Machinery/Machinery';
 import { selectMachineries } from '@app/core/ngrx/selectors/machinery.selectors';
-import { Employe } from '@app/shared/clases/Employes/Employe';
+import { Employe } from '@app/shared/classes/Employes/Employe';
 import { selectEmployes } from '@app/core/ngrx/selectors/employe.selectors';
 import { EmployeState } from '@app/core/ngrx/reducers/employe.reducer';
+import { ScheduleState } from '@app/core/ngrx/reducers/schedule.reducer';
+import * as fromActions from '@core/ngrx/actions/schedule.actions';
 
 @Component({
   selector: 'app-schedule-list',
@@ -27,7 +29,8 @@ export class ScheduleListComponent implements OnInit {
   constructor(
               private fb: FormBuilder,
               private storeMachinery: Store<MachineryState>,
-              private storeEmploye: Store<EmployeState>
+              private storeEmploye: Store<EmployeState>,
+              private store: Store<ScheduleState>
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +53,8 @@ export class ScheduleListComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.scheduleForm.value)
+    this.store.dispatch(fromActions.createSchedule({schedule: this.scheduleForm.value}));
+    this.scheduleForm.reset();
   }
 
   getEmployes() {

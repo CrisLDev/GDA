@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Machinery} from '@shared/clases/Machinery/Machinery';
+import {Machinery} from '@shared/classes/Machinery/Machinery';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { MachineryState } from '@app/core/ngrx/reducers/machinery.reducer';

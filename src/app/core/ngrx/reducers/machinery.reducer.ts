@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { Machinery } from '@app/shared/clases/Machinery/machinery';
+import { Machinery } from '@app/shared/classes/Machinery/machinery';
 import * as MachineryActions from '@core/ngrx/actions/machinery.actions';
 
 
