@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { MachineryService } from "@app/core/services/machinery.service";
+import { MachineryService } from "@app/core/services/machinery/machinery.service";
 import * as machineryActions from "@core/ngrx/actions/machinery.actions";
 import { map, tap, mergeMap, catchError, concatMap } from "rxjs/operators";
 import { of } from "rxjs";

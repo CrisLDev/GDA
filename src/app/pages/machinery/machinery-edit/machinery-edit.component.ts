@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { MachineryService } from '@app/core/services/machinery.service';
+import { MachineryService } from '@app/core/services/machinery/machinery.service';
 import { MachineryState } from '@app/core/ngrx/reducers/machinery.reducer';
 import { Store, select } from '@ngrx/store';
 import * as fromActions from '@core/ngrx/actions/machinery.actions';

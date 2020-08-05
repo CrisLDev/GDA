@@ -10,7 +10,7 @@ import {SharedModule} from '@shared/shared.module';
 import {LayoutModule} from '@shared/components/layout/layout.module';
 import { StoreModule } from '@ngrx/store';
 import * as fromMachinery from '@core/ngrx/reducers/machinery.reducer'
-import { MachineryService } from '@app/core/services/machinery.service';
+import { MachineryService } from '@app/core/services/machinery/machinery.service';
 
 @NgModule({
   declarations: [MachineryListComponent, MachineryCreateComponent, MachineryEditComponent],
