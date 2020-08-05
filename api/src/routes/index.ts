@@ -5,7 +5,7 @@ import {createEmploye, getEmployes, getEmploye, deleteEmploye, updateEmploye} fr
 import {createMachinery, getMachineries, getMachinery, deleteMachinery, updateMachinery} from '../controllers/machinery.controller';
 
 import multer from '../libs/multer';
-import { createSchedule } from '../controllers/schedule.controller';
+import { createSchedule, getSchedules } from '../controllers/schedule.controller';
 
 const router = Router();
 
@@ -34,6 +34,7 @@ router.route('/machineries/:id')
 // Schedules
 
 router.route('/schedules')
+    .get(getSchedules)
     .post(createSchedule);
 
 

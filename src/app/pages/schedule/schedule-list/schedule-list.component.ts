@@ -12,6 +12,8 @@ import { selectEmployes } from '@app/core/ngrx/selectors/employe.selectors';
 import { EmployeState } from '@app/core/ngrx/reducers/employe.reducer';
 import { ScheduleState } from '@app/core/ngrx/reducers/schedule.reducer';
 import * as fromActions from '@core/ngrx/actions/schedule.actions';
+import { Schedule } from '@app/shared/classes/Schedules/Schedules';
+import { selectSchedules } from '@app/core/ngrx/selectors/schedule.selectors';
 
 @Component({
   selector: 'app-schedule-list',
@@ -23,6 +25,8 @@ export class ScheduleListComponent implements OnInit {
   machineries$: Observable<Machinery[]>;
 
   employes$: Observable<Employe[]>;
+
+  schedules$: Observable<Schedule[]>;
 
   scheduleForm: FormGroup;
 
@@ -39,12 +43,15 @@ export class ScheduleListComponent implements OnInit {
     this.getMachineries();
     this.storeEmploye.dispatch(fromActionsEmployes.getEmployes());
     this.getEmployes();
+    this.store.dispatch(fromActions.getSchedules());
+    this.getSchedules();
   }
 
   private createForm(){
     this.scheduleForm = this.fb.group({
-      employe: [''],
-      machinery: [''],
+      employe_id: [''],
+      machinery_id: [''],
+      name: [''],
       description: [''],
       place: [''],
       startDate: [''],
@@ -63,6 +70,10 @@ export class ScheduleListComponent implements OnInit {
 
   getMachineries(){
     this.machineries$ = this.storeMachinery.pipe(select(selectMachineries));
+  }
+
+  getSchedules(){
+    this.schedules$ = this.store.pipe(select(selectSchedules));
   }
 
 }

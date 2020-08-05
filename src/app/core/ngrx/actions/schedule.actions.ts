@@ -2,17 +2,17 @@ import { createAction, props } from '@ngrx/store';
 import { Schedule } from '@app/shared/classes/Schedules/Schedules';
 
 // Get Schedules
-export const loadSchedules = createAction(
-  '[Schedule Component] get Schedules'
+export const getSchedules = createAction(
+  '[Schedule List Component] Get all Schedules'
 );
 
-export const loadSchedulesSuccess = createAction(
-  '[Schedule] Load Schedules Success',
-  props<{ data: any }>()
+export const getSchedulesSuccess = createAction(
+  '[Schedule Effect Success] Get All Schedules Success',
+  props<{ schedules: Schedule[] }>()
 );
 
-export const loadSchedulesFailure = createAction(
-  '[Schedule] Load Schedules Failure',
+export const getSchedulesFailure = createAction(
+  '[Schedule Effect Failure] Get All Schedules Failure',
   props<{ error: any }>()
 );
 

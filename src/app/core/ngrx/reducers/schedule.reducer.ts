@@ -29,6 +29,17 @@ export const scheduleReducer = createReducer(
       ...state,
       error: action.error
     }
+  }),
+
+  // Get all schedules
+  on(ScheduleActions.getSchedulesSuccess, (state, action) =>
+    adapter.addAll(action.schedules, state)
+  ),
+  on(ScheduleActions.getSchedulesFailure, (state, action) =>{
+    return {
+      ...state,
+      error: action.error
+    }
   })
 );
 

@@ -34,4 +34,19 @@ export class ScheduleEffects {
     tap(() => this.router.navigate['/horarios'])
   ));
 
+  // Get All Schedules
+  loadSchedules$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ScheduleActions.getSchedules),
+      mergeMap((action) =>
+        this.scheduleService.getSchedules().pipe(
+          map((schedules) => ScheduleActions.getSchedulesSuccess({schedules})),
+          catchError((error) =>
+            of(ScheduleActions.getSchedulesFailure({error}))
+          )
+        )
+      )
+    )
+  );
+
 }

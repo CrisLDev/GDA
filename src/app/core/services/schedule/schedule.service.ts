@@ -19,4 +19,8 @@ export class ScheduleService {
     return this.http.post<Schedule>(this.URI, schedule);
   }
 
+  getSchedules(): Observable<Schedule[]>{
+    return this.http.get<Schedule[]>(this.URI)
+  }
+
 }
