@@ -1,0 +1,7 @@
+input[type=time] {
+    font-size: 18px;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    font-size: 20px;
+}
