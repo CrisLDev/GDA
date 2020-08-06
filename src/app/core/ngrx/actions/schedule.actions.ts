@@ -50,7 +50,7 @@ export const createScheduleFailure = createAction(
 );
 
 // Edit Schedule
-export const editSchedule = createAction(
+export const updateSchedule = createAction(
   '[Schedule Edit Effect] Schedule Edit',
   props<{schedule: Update<Schedule>}>()
 );

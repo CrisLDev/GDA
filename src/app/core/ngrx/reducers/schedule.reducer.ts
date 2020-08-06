@@ -45,7 +45,7 @@ export const scheduleReducer = createReducer(
   }),
 
   // Edit Schedule
-  on(ScheduleActions.editSchedule, (state, action) =>
+  on(ScheduleActions.updateSchedule, (state, action) =>
     adapter.updateOne(action.schedule, state)
   ),
 

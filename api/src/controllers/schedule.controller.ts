@@ -29,7 +29,25 @@ export async function createSchedule(req: Request, res: Response): Promise<Respo
 
     const schedule = new Schedule(newSchedule);
 
-    await schedule.save();
+    await schedule.save().then(schedule => schedule.populate('employe_id', 'name').populate('machinery_id','name').execPopulate());
 
     return res.json(schedule)
+}
+
+export async function updateSchedule(req: Request, res: Response): Promise<Response>{
+    const {employe_id, machinery_id, name, startDate, endDate, place, description} = req.body;
+
+    const editSchedule ={
+        employe_id: employe_id,
+        machinery_id: machinery_id,
+        name: name,
+        startDate: startDate,
+        endDate: endDate,
+        place: place,
+        description: description
+    }
+
+    const updateSchedule = await Schedule.findByIdAndUpdate(req.params.id, editSchedule, {new: true});
+
+    return res.json(updateSchedule);
 }

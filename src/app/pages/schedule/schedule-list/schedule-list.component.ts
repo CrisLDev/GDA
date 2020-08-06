@@ -14,6 +14,7 @@ import { ScheduleState } from '@app/core/ngrx/reducers/schedule.reducer';
 import * as fromActions from '@core/ngrx/actions/schedule.actions';
 import { Schedule } from '@app/shared/classes/Schedules/Schedules';
 import { selectSchedules, selectedSchedule } from '@app/core/ngrx/selectors/schedule.selectors';
+import { Update } from '@ngrx/entity';
 
 @Component({
   selector: 'app-schedule-list',
@@ -63,7 +64,14 @@ export class ScheduleListComponent implements OnInit {
 
   onSubmit(idExist: string){
     if(idExist){
-      console.log('vamos a editar')
+      const update: Update<Schedule> = {
+        id: this.editModel._id,
+        changes: this.editModel,
+      };
+  
+      this.store.dispatch(fromActions.updateSchedule({ schedule: update }));
+      this.scheduleForm.reset();
+      this.editModel = {};
     }else{
       if(this.scheduleForm.valid){
         this.store.dispatch(fromActions.createSchedule({schedule: this.scheduleForm.value}));

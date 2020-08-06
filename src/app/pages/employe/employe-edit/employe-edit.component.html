@@ -128,7 +128,7 @@
                   placeholder="F. Nacimiento"
                   type="date"
                   formControlName="date"
-                  [(ngModel)]="model.date"
+                  [ngModel]="model.date | date:'yyyy-MM-dd'"
                   required
                 />
               </mat-form-field>

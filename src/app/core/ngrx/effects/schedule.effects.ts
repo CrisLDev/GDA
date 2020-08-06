@@ -53,7 +53,7 @@ export class ScheduleEffects {
   editSchedule$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(ScheduleActions.editSchedule),
+        ofType(ScheduleActions.updateSchedule),
         concatMap((action) =>
           this.scheduleService.editSchedule(
             action.schedule.id,
