@@ -11,6 +11,8 @@ import * as fromMachinery from '@core/ngrx/reducers/machinery.reducer';
 import * as fromEmploye from '@core/ngrx/reducers/employe.reducer';
 import * as fromSchedule from '@core/ngrx/reducers/schedule.reducer';
 import { ScheduleService } from '@app/core/services/schedule/schedule.service';
+import {NgxPageScrollModule} from 'ngx-page-scroll';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 
 @NgModule({
   declarations: [ScheduleListComponent],
@@ -19,6 +21,8 @@ import { ScheduleService } from '@app/core/services/schedule/schedule.service';
     SharedModule,
     LayoutModule,
     ScheduleRouting,
+    NgxPageScrollModule,
+    NgxPageScrollCoreModule.forRoot({duration: 650}),
     StoreModule.forFeature(fromSchedule.scheduleFeatureKey, fromSchedule.reducer),
     StoreModule.forFeature(fromEmploye.employeFeatureKey, fromEmploye.reducer),
     StoreModule.forFeature(fromMachinery.machineryFeatureKey, fromMachinery.reducer)

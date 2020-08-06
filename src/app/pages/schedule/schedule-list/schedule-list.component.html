@@ -2,7 +2,10 @@
     <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit(editModel._id)">
         <div class="row mt-3 mb-3">
           <div class="col-sm-6 task">
-            <div class="row">
+            <button mat-mini-fab pageScroll color="accent" href="#awesomePart" class="go-to">
+              <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+            <div class="row task-container">
               <div class="col-xl-6" *ngFor="let schedule of schedules$ | async" (click)="refillForm(schedule._id)">
                   <mat-card class="mb-3">
                       <h4>{{schedule.name}}</h4>
@@ -19,7 +22,7 @@
               </div>
             </div>
           </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6" id="awesomePart">
                 <div class="row">
                   <div class="col-xl-12 col-lg-6">
                     <mat-form-field appearance="outline">
