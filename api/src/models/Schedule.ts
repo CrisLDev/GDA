@@ -3,8 +3,8 @@ import {Schema, model, Document} from 'mongoose';
 const ObjectId = Schema.Types.ObjectId;
 
 const schema = new Schema({
-    employe_id: ObjectId,
-    machinery_id: ObjectId,
+    employe_id: {type: ObjectId, ref: 'Employe'},
+    machinery_id: {type: ObjectId, ref: 'Machinery'},
     dateRegister: {type: Date, default: Date.now},
     name: String,
     startDate: String,
@@ -14,8 +14,8 @@ const schema = new Schema({
 });
 
 interface ISchedule extends Document{
-    employe_id: string,
-    machinery_id: string,
+    employe_id: any,
+    machinery_id: any,
     dateRegister: Date,
     name: string,
     startDate: Date,

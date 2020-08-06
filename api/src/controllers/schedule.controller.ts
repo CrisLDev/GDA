@@ -3,7 +3,7 @@ import {Request, Response} from 'express';
 import Schedule from '../models/Schedule';
 
 export async function getSchedules(req: Request, res: Response): Promise<Response>{
-    const schedules = await Schedule.find();
+    const schedules = await Schedule.find().populate('employe_id', 'name').populate('machinery_id','name');
 
     return res.json(schedules);
 }
