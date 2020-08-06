@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Schedule } from '@app/shared/classes/Schedules/Schedules';
+import { Update } from '@ngrx/entity';
 
 // Get Schedules
 export const getSchedules = createAction(
@@ -7,13 +8,29 @@ export const getSchedules = createAction(
 );
 
 export const getSchedulesSuccess = createAction(
-  '[Schedule Effect Success] Get All Schedules Success',
+  '[Schedules Effect Success] Get All Schedules Success',
   props<{ schedules: Schedule[] }>()
 );
 
 export const getSchedulesFailure = createAction(
-  '[Schedule Effect Failure] Get All Schedules Failure',
+  '[Schedules Effect Failure] Get All Schedules Failure',
   props<{ error: any }>()
+);
+
+// Get Schedule
+export const getSchedule = createAction(
+  '[Schedule Component] Get Schedule',
+  props<{id: string}>()
+);
+
+export const getScheduleSuccess = createAction(
+  '[Schedule Effect Success] Get Schedule Success',
+  props<{selectedSchedule: Schedule}>()
+);
+
+export const getScheduleFailure = createAction(
+  '[Schedule Effect Success] Get Schedule Failure',
+  props<{error: any}>()
 );
 
 // Create Schedules
@@ -30,4 +47,10 @@ export const createScheduleSuccess = createAction(
 export const createScheduleFailure = createAction(
   '[Schedule Create Effect Failure] Schedule Create Failure',
   props<{error: any}>()
+);
+
+// Edit Schedule
+export const editSchedule = createAction(
+  '[Schedule Edit Effect] Schedule Edit',
+  props<{schedule: Update<Schedule>}>()
 );

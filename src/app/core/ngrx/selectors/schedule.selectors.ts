@@ -6,3 +6,7 @@ export const selectScheduleState = createFeatureSelector<ScheduleState>(
 );
 
 export const selectSchedules = createSelector(selectScheduleState, selectAll);
+
+export const selectedSchedule = createSelector(selectScheduleState,
+    (state: ScheduleState) => state.selectedSchedule
+);

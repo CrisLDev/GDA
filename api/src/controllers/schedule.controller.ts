@@ -8,6 +8,12 @@ export async function getSchedules(req: Request, res: Response): Promise<Respons
     return res.json(schedules);
 }
 
+export async function getSchedule(req: Request, res: Response): Promise<Response>{
+    const schedule = await Schedule.findById(req.params.id);
+
+    return res.json(schedule);
+}
+
 export async function createSchedule(req: Request, res: Response): Promise<Response>{
     const {employe_id, machinery_id, name, startDate, endDate, place, description} = req.body;
 

@@ -7,6 +7,7 @@ export const scheduleFeatureKey = 'schedule';
 
 export interface ScheduleState extends EntityState<Schedule>{
   error: any;
+  selectedSchedule: Schedule;
 }
 
 export const adapter: EntityAdapter<Schedule> = createEntityAdapter<Schedule>({
@@ -14,7 +15,8 @@ export const adapter: EntityAdapter<Schedule> = createEntityAdapter<Schedule>({
 });
 
 export const initialState = adapter.getInitialState({
-  error: undefined
+  error: undefined,
+  selectedSchedule: undefined
 });
 
 
@@ -40,7 +42,28 @@ export const scheduleReducer = createReducer(
       ...state,
       error: action.error
     }
-  })
+  }),
+
+  // Edit Schedule
+  on(ScheduleActions.editSchedule, (state, action) =>
+    adapter.updateOne(action.schedule, state)
+  ),
+
+  // Get Schedule
+  on(ScheduleActions.getScheduleSuccess, (state, action) =>{
+      return{
+        ...state,
+        selectedSchedule: action.selectedSchedule
+      }
+    }
+  ),
+  on(ScheduleActions.getScheduleFailure, (state, action) =>{
+      return{
+        ...state,
+        error: action.error
+      }
+    }
+  ),
 );
 
 export function reducer(state: ScheduleState | undefined, action: Action){

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Schedule } from '@app/shared/classes/Schedules/Schedules';
-import { Observable } from 'rxjs';
+import { Observable, scheduled } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +15,19 @@ export class ScheduleService {
   ) { }
 
   createSchedule(schedule: Schedule): Observable<Schedule>{
-    console.log('aqui estamos');
     return this.http.post<Schedule>(this.URI, schedule);
   }
 
   getSchedules(): Observable<Schedule[]>{
     return this.http.get<Schedule[]>(this.URI)
+  }
+
+  editSchedule(scheduleId: string | number, changes: Partial<Schedule>):Observable<Schedule>{
+    return this.http.put<Schedule>(this.URI + scheduleId, changes);
+  }
+
+  getSchedule(scheduleId: string): Observable<Schedule>{
+    return this.http.get<Schedule>(this.URI + scheduleId);
   }
 
 }

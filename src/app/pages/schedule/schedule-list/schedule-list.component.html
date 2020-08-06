@@ -1,9 +1,9 @@
 <div class="container-fluid">
-    <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit(editModel._id)">
         <div class="row mt-3">
           <div class="col-xl-6">
             <div class="row">
-              <div class="col-xl-6" *ngFor="let schedule of schedules$ | async">
+              <div class="col-xl-6" *ngFor="let schedule of schedules$ | async" (click)="refillForm(schedule._id)">
                   <mat-card class="mb-3">
                       <h4>{{schedule.name}}</h4>
                       <div>
@@ -32,6 +32,7 @@
                         minlength="5"
                         type="text"
                         formControlName="name"
+                        [(ngModel)]="editModel.name"
                         required
                       />
                       <mat-icon matSuffix>place</mat-icon>

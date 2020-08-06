@@ -13,7 +13,7 @@ import { EmployeState } from '@app/core/ngrx/reducers/employe.reducer';
 import { ScheduleState } from '@app/core/ngrx/reducers/schedule.reducer';
 import * as fromActions from '@core/ngrx/actions/schedule.actions';
 import { Schedule } from '@app/shared/classes/Schedules/Schedules';
-import { selectSchedules } from '@app/core/ngrx/selectors/schedule.selectors';
+import { selectSchedules, selectedSchedule } from '@app/core/ngrx/selectors/schedule.selectors';
 
 @Component({
   selector: 'app-schedule-list',
@@ -27,6 +27,8 @@ export class ScheduleListComponent implements OnInit {
   employes$: Observable<Employe[]>;
 
   schedules$: Observable<Schedule[]>;
+
+  editModel: any = {};
 
   scheduleForm: FormGroup;
 
@@ -59,10 +61,14 @@ export class ScheduleListComponent implements OnInit {
     })
   }
 
-  onSubmit(){
-    if(this.scheduleForm.valid){
-      this.store.dispatch(fromActions.createSchedule({schedule: this.scheduleForm.value}));
-      this.scheduleForm.reset();
+  onSubmit(idExist: string){
+    if(idExist){
+      console.log('vamos a editar')
+    }else{
+      if(this.scheduleForm.valid){
+        this.store.dispatch(fromActions.createSchedule({schedule: this.scheduleForm.value}));
+        this.scheduleForm.reset();
+      }
     }
   }
 
@@ -76,6 +82,13 @@ export class ScheduleListComponent implements OnInit {
 
   getSchedules(){
     this.schedules$ = this.store.pipe(select(selectSchedules));
+  }
+
+  refillForm(employe_id: string){
+    this.store.dispatch(fromActions.getSchedule({id: employe_id}));
+
+    this.store.pipe(select(selectedSchedule)).subscribe(schedule => (this.editModel = Object.assign(new Schedule(), schedule))
+    );
   }
 
 }
