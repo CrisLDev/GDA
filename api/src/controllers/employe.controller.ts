@@ -38,10 +38,7 @@ export async function createEmploye(req: Request, res:Response): Promise<Respons
 
     await employe.save();
 
-    return res.json({
-        message:'Employe successfully saved',
-        employe
-    })
+    return res.json(employe)
 };
 
 export async function deleteEmploye(req: Request, res:Response): Promise<Response> {

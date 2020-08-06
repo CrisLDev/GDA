@@ -60,8 +60,10 @@ export class ScheduleListComponent implements OnInit {
   }
 
   onSubmit(){
-    this.store.dispatch(fromActions.createSchedule({schedule: this.scheduleForm.value}));
-    this.scheduleForm.reset();
+    if(this.scheduleForm.valid){
+      this.store.dispatch(fromActions.createSchedule({schedule: this.scheduleForm.value}));
+      this.scheduleForm.reset();
+    }
   }
 
   getEmployes() {

@@ -25,8 +25,5 @@ export async function createSchedule(req: Request, res: Response): Promise<Respo
 
     await schedule.save();
 
-    return res.json({
-        message: 'Schedule saved successfully',
-        schedule
-    })
+    return res.json(schedule)
 }

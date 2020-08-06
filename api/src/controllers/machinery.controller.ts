@@ -34,10 +34,7 @@ export async function createMachinery(req: Request, res:Response): Promise<Respo
 
     await machinery.save();
 
-    return res.json({
-        message:'Machinery successfully saved',
-        machinery    
-    });
+    return res.json(machinery);
 };
 
 export async function deleteMachinery(req: Request, res:Response): Promise<Response> {
