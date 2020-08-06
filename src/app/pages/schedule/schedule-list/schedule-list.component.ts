@@ -99,4 +99,9 @@ export class ScheduleListComponent implements OnInit {
     );
   }
 
+  clearForm(): void{
+    this.scheduleForm.reset();
+    this.editModel = {};
+  }
+
 }

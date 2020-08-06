@@ -5,3 +5,9 @@ input[type=time] {
 input[type="time"]::-webkit-calendar-picker-indicator {
     font-size: 20px;
 }
+
+.task{
+    height: 80vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}

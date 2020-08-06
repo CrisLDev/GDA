@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit(editModel._id)">
-        <div class="row mt-3">
-          <div class="col-xl-6">
+        <div class="row mt-3 mb-3">
+          <div class="col-sm-6 task">
             <div class="row">
               <div class="col-xl-6" *ngFor="let schedule of schedules$ | async" (click)="refillForm(schedule._id)">
                   <mat-card class="mb-3">
@@ -19,9 +19,9 @@
               </div>
             </div>
           </div>
-            <div class="col-xl-6">
+            <div class="col-sm-6">
                 <div class="row">
-                  <div class="col-xl-12">
+                  <div class="col-xl-12 col-lg-6">
                     <mat-form-field appearance="outline">
                       <mat-label>Ingresa el nombre de la tarea</mat-label>
                       <input
@@ -38,7 +38,7 @@
                       <mat-icon matSuffix>place</mat-icon>
                     </mat-form-field>
                   </div>
-                  <div class="col-xl-12">
+                  <div class="col-xl-12 col-lg-6">
                     <mat-form-field appearance="outline">
                         <mat-label>Empleado</mat-label>
                         <mat-select formControlName="employe_id" [(ngModel)]="editModel.employe_id">
@@ -48,7 +48,7 @@
                         </mat-select>
                     </mat-form-field>
                   </div>
-                  <div class="col-xl-12">
+                  <div class="col-xl-12 col-lg-6">
                     <mat-form-field appearance="outline">
                         <mat-label>Maquinaria</mat-label>
                         <mat-select formControlName="machinery_id" [(ngModel)]="editModel.machinery_id">
@@ -56,7 +56,7 @@
                         </mat-select>
                     </mat-form-field>
                   </div>
-                  <div class="col-xl-12">
+                  <div class="col-xl-12 col-lg-6">
                     <mat-form-field appearance="outline">
                       <mat-label>Ingresa fecha de incio</mat-label>
                       <input
@@ -71,7 +71,7 @@
                       />
                     </mat-form-field>
                   </div>
-                  <div class="col-xl-12">
+                  <div class="col-xl-12 col-lg-6">
                     <mat-form-field appearance="outline">
                       <mat-label>Ingresa fecha de finalizacion</mat-label>
                       <input
@@ -86,7 +86,7 @@
                       />
                     </mat-form-field>
                   </div>
-                  <div class="col-xl-12">
+                  <div class="col-xl-12 col-lg-6">
                     <mat-form-field appearance="outline">
                       <mat-label>Ingresa el lugar</mat-label>
                       <input
@@ -103,14 +103,17 @@
                       <mat-icon matSuffix>place</mat-icon>
                     </mat-form-field>
                   </div>
-                  <div class="col-xl-12">
+                  <div class="col-lg-12">
                     <mat-form-field appearance="outline">
                       <mat-label>Ingresa una descripción</mat-label>
                       <textarea matInput formControlName="description" class="shadow-none" [(ngModel)]="editModel.description"></textarea>
                     </mat-form-field>
                   </div>
-                  <div class="col-xl-12">
+                  <div class="col-6">
                     <button mat-raised-button color="primary" class="w-100" type="submit" >Guardar</button>
+                  </div>
+                  <div class="col-6">
+                    <button mat-raised-button color="warn" class="w-100" (click)="clearForm()" >Limpiar</button>
                   </div>
                 </div>
             </div>
