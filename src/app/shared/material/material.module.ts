@@ -17,6 +17,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -36,7 +37,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatListModule,
     MatDatepickerModule,
     MatSelectModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSnackBarModule
   ],
   exports: [
     MatIconModule,
@@ -53,7 +55,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatListModule,
     MatDatepickerModule,
     MatSelectModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule { }

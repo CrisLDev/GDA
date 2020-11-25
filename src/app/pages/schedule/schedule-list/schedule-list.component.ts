@@ -15,6 +15,7 @@ import * as fromActions from '@core/ngrx/actions/schedule.actions';
 import { Schedule } from '@app/shared/classes/Schedules/Schedules';
 import { selectSchedules, selectedSchedule } from '@app/core/ngrx/selectors/schedule.selectors';
 import { Update } from '@ngrx/entity';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-schedule-list',
@@ -47,7 +48,8 @@ export class ScheduleListComponent implements OnInit {
               private fb: FormBuilder,
               private storeMachinery: Store<MachineryState>,
               private storeEmploye: Store<EmployeState>,
-              private store: Store<ScheduleState>
+              private store: Store<ScheduleState>,
+              private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -89,8 +91,6 @@ export class ScheduleListComponent implements OnInit {
         name: this.selectedMachinery.name
       }
 
-      console.log(employe, machinery)
-
       update.changes.employe_id = employe;
 
       update.changes.machinery_id = machinery;
@@ -99,6 +99,9 @@ export class ScheduleListComponent implements OnInit {
       this.scheduleForm.reset();
       this.scheduleForm.markAsUntouched();
       this.editModel = {};
+      this.snackBar.open('Horario editado correctamente.', 'Cerrar', {
+        duration: 2000
+      });
     }else{
       if(this.scheduleForm.valid){
         this.store.dispatch(fromActions.createSchedule({schedule: this.scheduleForm.value}));

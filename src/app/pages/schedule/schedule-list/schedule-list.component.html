@@ -8,7 +8,7 @@
             <div class="row task-container">
               <div class="col-xl-6" *ngFor="let schedule of schedules$ | async" (click)="refillForm(schedule._id, schedule.employe_id, schedule.machinery_id)">
                   <mat-card class="mb-3">
-                      <h4>{{schedule.name}}</h4>
+                      <h4><mat-icon>power_settings_new</mat-icon>{{schedule.name}}</h4>
                       <div>
                         <mat-chip-list cdkDropList 
                           cdkDropListOrientation="horizontal">
