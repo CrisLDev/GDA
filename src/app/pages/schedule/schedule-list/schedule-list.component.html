@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit(editModel._id)">
+    <form [formGroup]="scheduleForm" #formDirective="ngForm" (ngSubmit)="onSubmit(editModel._id, formDirective)" novalidate>
         <div class="row mt-3 mb-3">
           <div class="col-sm-6 task">
             <button mat-mini-fab pageScroll color="accent" href="#awesomePart" class="go-to">
@@ -40,6 +40,21 @@
                       />
                       <mat-icon matSuffix>place</mat-icon>
                     </mat-form-field>
+                    <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)"
+              class="alert alert-danger">
+
+                  <div *ngIf="f.name.errors.required">
+                    Información requerida.
+                  </div>
+                  <div *ngIf="f.name.errors.minlength">
+                    El titulo debe contener más de 4 caracteres.
+                  </div>
+                  <div *ngIf="f.name.errors.maxlength">
+                    El titulo no debe contener más de 40 caracteres.
+                  </div>
+                  <div *ngIf="f.name.pending">Validando...</div>
+
+              </div>
                   </div>
                   <div class="col-xl-12 col-lg-6">
                     <mat-form-field appearance="outline">
@@ -110,7 +125,7 @@
                     </mat-form-field>
                   </div>
                   <div class="col-6">
-                    <button mat-raised-button color="primary" class="w-100" type="submit" >Guardar</button>
+                    <button mat-raised-button color="primary" class="w-100" type="submit" [disabled]="scheduleForm.invalid">Guardar</button>
                   </div>
                   <div class="col-6">
                     <button mat-raised-button color="warn" class="w-100" (click)="clearForm()" >Limpiar</button>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
 import { MachineryState } from '@app/core/ngrx/reducers/machinery.reducer';
 import { Store, select } from '@ngrx/store';
 import * as fromActionsEmployes from "@core/ngrx/actions/employe.actions";
@@ -79,19 +79,19 @@ export class ScheduleListComponent implements OnInit {
 
   private createForm(){
     this.scheduleForm = this.fb.group({
-      employe_id: [this.editModel.employe_id._id || ''],
-      machinery_id: [this.editModel.machinery_id._id || ''],
-      name: [this.editModel.name || ''],
-      description: [this.editModel.description || ''],
-      place: [this.editModel.place || ''],
-      startDate: [this.editModel.startDate || ''],
-      endDate: [this.editModel.endDate || '']
+      employe_id: [this.editModel.employe_id._id || '', Validators.compose([Validators.required])],
+      machinery_id: [this.editModel.machinery_id._id || '', Validators.compose([Validators.required])],
+      name: [this.editModel.name || '', Validators.compose([Validators.required])],
+      description: [this.editModel.description || '', Validators.compose([Validators.required])],
+      place: [this.editModel.place || '', Validators.compose([Validators.required])],
+      startDate: [this.editModel.startDate || '', Validators.compose([Validators.required])],
+      endDate: [this.editModel.endDate || '', Validators.compose([Validators.required])]
     })
   }
 
   get f() { return this.scheduleForm.controls; }
 
-  onSubmit(idExist: string){
+  onSubmit(idExist: string, formDirective: FormGroupDirective){
     if(idExist){
       const update: Update<Schedule> = {
         id: this.editModel._id,
@@ -114,6 +114,7 @@ export class ScheduleListComponent implements OnInit {
   
       this.store.dispatch(fromActions.updateSchedule({ schedule: update }));
       this.scheduleForm.reset();
+      formDirective.resetForm();
       this.scheduleForm.markAsUntouched();
       this.snackBar.open('Horario editado correctamente.', 'Cerrar', {
         duration: 2000
