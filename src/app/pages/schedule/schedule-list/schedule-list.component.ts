@@ -33,6 +33,16 @@ export class ScheduleListComponent implements OnInit {
 
   scheduleForm: FormGroup;
 
+  employeName: string;
+
+  machineryName: string;
+
+  employess;
+
+  selectedEmploye: any = {};
+
+  selectedMachinery: any = {};
+
   constructor(
               private fb: FormBuilder,
               private storeMachinery: Store<MachineryState>,
@@ -68,14 +78,32 @@ export class ScheduleListComponent implements OnInit {
         id: this.editModel._id,
         changes: this.editModel,
       };
+
+      const employe = {
+        _id: this.selectedEmploye._id,
+        name: this.selectedEmploye.name
+      }
+
+      const machinery = {
+        _id: this.selectedMachinery._id,
+        name: this.selectedMachinery.name
+      }
+
+      console.log(employe, machinery)
+
+      update.changes.employe_id = employe;
+
+      update.changes.machinery_id = machinery;
   
       this.store.dispatch(fromActions.updateSchedule({ schedule: update }));
       this.scheduleForm.reset();
+      this.scheduleForm.markAsUntouched();
       this.editModel = {};
     }else{
       if(this.scheduleForm.valid){
         this.store.dispatch(fromActions.createSchedule({schedule: this.scheduleForm.value}));
         this.scheduleForm.reset();
+        this.scheduleForm.markAsUntouched();
       }
     }
   }
@@ -92,16 +120,40 @@ export class ScheduleListComponent implements OnInit {
     this.schedules$ = this.store.pipe(select(selectSchedules));
   }
 
-  refillForm(employe_id: string){
-    this.store.dispatch(fromActions.getSchedule({id: employe_id}));
+  refillForm(schedule_id: string, employeData, machineryData){
+    this.store.dispatch(fromActions.getSchedule({id: schedule_id}));
 
     this.store.pipe(select(selectedSchedule)).subscribe(schedule => (this.editModel = Object.assign(new Schedule(), schedule))
     );
+
+    this.selectedMachinery = {
+      _id: machineryData._id,
+      name: machineryData.name
+    }
+
+    this.selectedEmploye = {
+      _id: employeData._id,
+      name: employeData.name
+    }
   }
 
   clearForm(): void{
     this.scheduleForm.reset();
     this.editModel = {};
+  }
+
+  addEmploye(event){
+    this.selectedEmploye = {
+      _id: event.value,
+      name: event.source.triggerValue
+    }
+  }
+
+  addMachinery(event){
+    this.selectedMachinery = {
+      _id: event.value,
+      name: event.source.triggerValue
+    }
   }
 
 }

@@ -6,7 +6,7 @@
               <mat-icon>keyboard_arrow_down</mat-icon>
             </button>
             <div class="row task-container">
-              <div class="col-xl-6" *ngFor="let schedule of schedules$ | async" (click)="refillForm(schedule._id)">
+              <div class="col-xl-6" *ngFor="let schedule of schedules$ | async" (click)="refillForm(schedule._id, schedule.employe_id, schedule.machinery_id)">
                   <mat-card class="mb-3">
                       <h4>{{schedule.name}}</h4>
                       <div>
@@ -18,6 +18,7 @@
                         </mat-chip-list>
                       </div>
                       <h3>{{schedule.employe_id.name}}</h3>
+                      <h3>{{schedule.machinery_id.name}}</h3>
                   </mat-card>
               </div>
             </div>
@@ -41,7 +42,17 @@
                       <mat-icon matSuffix>place</mat-icon>
                     </mat-form-field>
                   </div>
-                  <div class="col-xl-12 col-lg-6">
+                  <div class="col-xl-12 col-lg-6" *ngIf="editModel._id">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Empleado</mat-label>
+                        <mat-select formControlName="employe_id" [(ngModel)]="editModel.employe_id._id" (selectionChange)="addEmploye($event)">
+                          <mat-option *ngFor="let employe of employes$ | async" value="{{employe._id}}">
+                            {{employe.name}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xl-12 col-lg-6" *ngIf="!editModel._id">
                     <mat-form-field appearance="outline">
                         <mat-label>Empleado</mat-label>
                         <mat-select formControlName="employe_id" [(ngModel)]="editModel.employe_id">
@@ -51,7 +62,15 @@
                         </mat-select>
                     </mat-form-field>
                   </div>
-                  <div class="col-xl-12 col-lg-6">
+                  <div class="col-xl-12 col-lg-6" *ngIf="editModel._id">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Maquinaria</mat-label>
+                        <mat-select formControlName="machinery_id" [(ngModel)]="editModel.machinery_id._id" (selectionChange)="addMachinery($event)">
+                          <mat-option *ngFor="let machinery of machineries$ | async" value="{{machinery._id}}">{{machinery.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xl-12 col-lg-6" *ngIf="!editModel._id">
                     <mat-form-field appearance="outline">
                         <mat-label>Maquinaria</mat-label>
                         <mat-select formControlName="machinery_id" [(ngModel)]="editModel.machinery_id">

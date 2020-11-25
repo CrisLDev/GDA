@@ -1,7 +1,7 @@
 export class Schedule{
     _id: string;
-    employe_id: string;
-    machinery_id: string;
+    employe_id: any;
+    machinery_id: any;
     startDate: string;
     endDate: string;
     place: string;

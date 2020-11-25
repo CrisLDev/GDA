@@ -9,7 +9,7 @@ export async function getSchedules(req: Request, res: Response): Promise<Respons
 }
 
 export async function getSchedule(req: Request, res: Response): Promise<Response>{
-    const schedule = await Schedule.findById(req.params.id);
+    const schedule = await Schedule.findById(req.params.id).populate('employe_id', 'name').populate('machinery_id','name');
 
     return res.json(schedule);
 }
@@ -35,11 +35,14 @@ export async function createSchedule(req: Request, res: Response): Promise<Respo
 }
 
 export async function updateSchedule(req: Request, res: Response): Promise<Response>{
+
+    console.log(req.body)
+
     const {employe_id, machinery_id, name, startDate, endDate, place, description} = req.body;
 
     const editSchedule ={
-        employe_id: employe_id,
-        machinery_id: machinery_id,
+        employe_id: employe_id._id,
+        machinery_id: machinery_id._id,
         name: name,
         startDate: startDate,
         endDate: endDate,
@@ -47,7 +50,7 @@ export async function updateSchedule(req: Request, res: Response): Promise<Respo
         description: description
     }
 
-    const updateSchedule = await Schedule.findByIdAndUpdate(req.params.id, editSchedule, {new: true});
+    const schedule = await Schedule.findByIdAndUpdate(req.params.id, editSchedule, {new: true});
 
-    return res.json(updateSchedule);
+    return res.json(schedule);
 }
