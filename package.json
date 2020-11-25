@@ -28,6 +28,7 @@
     "@ngrx/store": "^9.0.0",
     "@ngrx/store-devtools": "^9.2.0",
     "bootswatch": "^4.5.0",
+    "firebase": "^8.1.1",
     "ngx-page-scroll": "^7.0.3",
     "ngx-page-scroll-core": "^7.0.3",
     "rxjs": "~6.5.4",

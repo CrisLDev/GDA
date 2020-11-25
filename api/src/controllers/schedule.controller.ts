@@ -36,8 +36,6 @@ export async function createSchedule(req: Request, res: Response): Promise<Respo
 
 export async function updateSchedule(req: Request, res: Response): Promise<Response>{
 
-    console.log(req.body)
-
     const {employe_id, machinery_id, name, startDate, endDate, place, description} = req.body;
 
     const editSchedule ={
