@@ -30,7 +30,22 @@ export class ScheduleListComponent implements OnInit {
 
   schedules$: Observable<Schedule[]>;
 
-  editModel: any = {};
+  editModel: any = {
+    _id: "",
+    name: "",
+    employe_id: {
+      _id: "",
+      name:"",
+    },
+    machinery_id: {
+      _id: "",
+      name:"",
+    },
+    startDate: "",
+    endDate: "",
+    place: "",
+    description: ""
+  };
 
   scheduleForm: FormGroup;
 
@@ -64,21 +79,23 @@ export class ScheduleListComponent implements OnInit {
 
   private createForm(){
     this.scheduleForm = this.fb.group({
-      employe_id: [''],
-      machinery_id: [''],
-      name: [''],
-      description: [''],
-      place: [''],
-      startDate: [''],
-      endDate: ['']
+      employe_id: [this.editModel.employe_id._id || ''],
+      machinery_id: [this.editModel.machinery_id._id || ''],
+      name: [this.editModel.name || ''],
+      description: [this.editModel.description || ''],
+      place: [this.editModel.place || ''],
+      startDate: [this.editModel.startDate || ''],
+      endDate: [this.editModel.endDate || '']
     })
   }
+
+  get f() { return this.scheduleForm.controls; }
 
   onSubmit(idExist: string){
     if(idExist){
       const update: Update<Schedule> = {
         id: this.editModel._id,
-        changes: this.editModel,
+        changes: this.scheduleForm.value,
       };
 
       const employe = {
@@ -98,7 +115,6 @@ export class ScheduleListComponent implements OnInit {
       this.store.dispatch(fromActions.updateSchedule({ schedule: update }));
       this.scheduleForm.reset();
       this.scheduleForm.markAsUntouched();
-      this.editModel = {};
       this.snackBar.open('Horario editado correctamente.', 'Cerrar', {
         duration: 2000
       });
@@ -107,6 +123,9 @@ export class ScheduleListComponent implements OnInit {
         this.store.dispatch(fromActions.createSchedule({schedule: this.scheduleForm.value}));
         this.scheduleForm.reset();
         this.scheduleForm.markAsUntouched();
+        this.snackBar.open('Horario creado correctamente.', 'Cerrar', {
+          duration: 2000
+        });
       }
     }
   }
@@ -123,7 +142,7 @@ export class ScheduleListComponent implements OnInit {
     this.schedules$ = this.store.pipe(select(selectSchedules));
   }
 
-  refillForm(schedule_id: string, employeData, machineryData){
+  refillForm(schedule_id: string, employeData, machineryData, schedule){
     this.store.dispatch(fromActions.getSchedule({id: schedule_id}));
 
     this.store.pipe(select(selectedSchedule)).subscribe(schedule => (this.editModel = Object.assign(new Schedule(), schedule))
@@ -138,11 +157,20 @@ export class ScheduleListComponent implements OnInit {
       _id: employeData._id,
       name: employeData.name
     }
+
+      this.scheduleForm.patchValue({
+        name: schedule.name,
+        employe_id: schedule.employe_id._id,
+        machinery_id: schedule.machinery_id._id,
+        place: schedule.place,
+        startDate: schedule.startDate,
+        endDate: schedule.endDate,
+        description: schedule.description,
+      })
   }
 
   clearForm(): void{
     this.scheduleForm.reset();
-    this.editModel = {};
   }
 
   addEmploye(event){

@@ -4,7 +4,7 @@ import {UsersComponent} from './components/users/users.component';
 import {MatDialog} from '@angular/material/dialog';
 import {loginWithGoogle, signOutGoogle} from '@core/firebase/firebase';
 import {AuthService} from '@core/services/auth/auth.service'
-import { async } from '@angular/core/testing';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +15,8 @@ export class NavbarComponent implements OnInit {
 
   @ViewChild('sidenav') sidenav;
 
-  constructor(public dialog:MatDialog, public authService: AuthService) { }
+  constructor(public dialog:MatDialog, public authService: AuthService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -49,6 +50,9 @@ export class NavbarComponent implements OnInit {
     loginWithGoogle().then(async (user) => {
       localStorage.setItem('email', user.email);
       localStorage.setItem('name', user.displayName);
+      this.snackBar.open('Te has logeado correctamente.', 'Cerrar', {
+        duration: 2000
+      });
     });
   }
 
@@ -60,6 +64,9 @@ export class NavbarComponent implements OnInit {
   async logoutGoogle(){
     await signOutGoogle();
     await this.clearStorage();
+    await this.snackBar.open('Te has deslogeado correctamente.', 'Cerrar', {
+      duration: 2000
+    });
   }
 
 }
